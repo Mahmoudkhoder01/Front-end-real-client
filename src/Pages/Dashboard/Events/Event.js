@@ -1,7 +1,7 @@
 import classes from "./Event.module.css";
 
-const Event = () => {
+const Events = () => {
   return <div></div>;
 };
 
-export default Event;
+export default Events;
