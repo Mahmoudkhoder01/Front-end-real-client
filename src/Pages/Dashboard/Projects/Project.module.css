@@ -29,3 +29,8 @@
     outline: 0;
     border-bottom: 1px solid #9e9d9d;
   }
+
+  .image{
+    width: 50px;
+    height: 50px;
+  }

@@ -8,7 +8,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { toast } from "react-toastify";
-import classes from "./delete.module.css";
 
 const style = {
   position: "absolute",
@@ -22,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function ClassDeleteCard(props) {
+export default function ProjectDeleteCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
