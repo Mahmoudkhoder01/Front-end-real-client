@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 // Import Css Files
 import classes from "./Sidebar.module.css";
@@ -14,6 +14,18 @@ import { FaUserCheck, FaUserTie } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 
 function Sidebar() {
+  const currentPath = useLocation().pathname;
+  if (
+    currentPath === "/" ||
+    currentPath === "/about" ||
+    currentPath === "/events" ||
+    currentPath === "/kids" ||
+    currentPath === "/projects" ||
+    currentPath === "/team" ||
+    currentPath === "/services"
+  )
+    return null;
+
   return (
     <Fragment>
       <nav className={classes.sidebar}>
