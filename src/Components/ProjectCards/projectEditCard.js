@@ -86,8 +86,9 @@ export default function ClassEditCard(props) {
                     value={updatedData.name}
                     label="Name"
                     onChange={handleFormChange}
-                    variant="outlined"
-                    fullWidth
+
+                    variant="outlined" 
+                    fullWidth 
                     required
                   />
                 </Grid>
