@@ -68,10 +68,8 @@ const FixedTables = () => {
             <TableHead></TableHead>
             <TableHead>
               <TableRow>
-                <StyledTableCell>ID</StyledTableCell>
                 <StyledTableCell>NAME</StyledTableCell>
-                <StyledTableCell>CRAETED AT</StyledTableCell>
-                <StyledTableCell>UPDATET AT</StyledTableCell>
+                <StyledTableCell>DUE</StyledTableCell>
                 <StyledTableCell></StyledTableCell>
               </TableRow>
             </TableHead>
@@ -79,9 +77,9 @@ const FixedTables = () => {
               {data.map((row) => (
                 <StyledTableRow key={row._id}>
                   <StyledTableCell component="th" scope="row">
-                    {row._id}
+                    {row.title}
                   </StyledTableCell>
-                  <StyledTableCell>{row.title}</StyledTableCell>
+                  {/* <StyledTableCell>{row.service_id.name}</StyledTableCell> */}
                   <StyledTableCell>{row.due.slice(0, 10)}</StyledTableCell>
                   {/* <ClassEditCard
                       adminValue={row.name}
