@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-
+import Classes from "./dashboard.module.css";
 // import pages
 import Services from "../Services/Services";
 import Projects from "../Projects/Projects";
@@ -11,11 +11,11 @@ import Sidebar from "../../../Components/Sidebar/Sidebar";
 
 function DashboardRoutes() {
   return (
-    <div className="App">
-      <div className="App-sidebar">
+    <div className={Classes.App}>
+      <div className={Classes.AppSidebar}>
         <Sidebar />
       </div>
-      <div className="App-container">
+      <div className={Classes.AppContainer}>
         <Routes>
           <Route exact path="/admin/services" element={<Services />} />
           <Route path="/admin/projects" element={<Projects />} />

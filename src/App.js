@@ -5,7 +5,7 @@ function App() {
   return (
     <Routes>
       <Route exact path="*" element={<DashboardRoutes />} />
-      {/* <Route path="/admin" element={<Admin />} /> */}
+      {/* <Route path="/admin" element={<Website />} /> */}
     </Routes>
   );
 }
