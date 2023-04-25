@@ -37,7 +37,7 @@ const FixedTables = () => {
 
   const fetchDataByPagination = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/project`);
+      const response = await axios.get(`${process.env.REACT_APP_URL}project`);
       setData(response.data.message);
       setCounter(response.data.message);
       setIsLoading(true);
@@ -46,6 +46,8 @@ const FixedTables = () => {
       console.error("Error fetching data: ", error);
     }
   };
+
+  console.log(`${process.env.REACT_APP_URL}project`);
 
   useEffect(() => {
     fetchDataByPagination();
@@ -80,6 +82,12 @@ const FixedTables = () => {
                     {row.title}
                   </StyledTableCell>
                   {/* <StyledTableCell>{row.service_id.name}</StyledTableCell> */}
+                  <StyledTableCell>
+                    <img
+                      src={`${process.env.REACT_APP_URL}${row.image}`}
+                      alt="img"
+                    />
+                  </StyledTableCell>
                   <StyledTableCell>{row.due.slice(0, 10)}</StyledTableCell>
                   {/* <ClassEditCard
                       adminValue={row.name}
