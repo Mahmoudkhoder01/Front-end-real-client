@@ -26,37 +26,37 @@ function Sidebar() {
         </div>
 
         <div className={classes.bar}>
-          <NavLink to={"/services"}>
+          <NavLink to={"/admin/services"}>
             <RxDashboard className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Services</span>
           </NavLink>
-          <NavLink to={"/projects"}>
+          <NavLink to={"/admin/projects"}>
             <MdOutlineClass className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Projects</span>
           </NavLink>
-          <NavLink to={"/events"}>
+          <NavLink to={"/admin/events"}>
             <HiTableCells className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Events</span>
           </NavLink>
-          <NavLink to={"/about"}>
+          <NavLink to={"/admin/about"}>
             <BiUser className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>About</span>
           </NavLink>
-          <NavLink to={"/kids"}>
+          <NavLink to={"/admin/kids"}>
             <FaUserCheck className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Kids</span>
           </NavLink>
-          <NavLink to={"/team"}>
+          <NavLink to={"/admin/team"}>
             <FaUserTie className={classes.icons} size={25} />
             <b></b>
             <u></u>
