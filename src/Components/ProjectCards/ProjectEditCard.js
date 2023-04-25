@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import classes from "../AddStudent/AddStudentForm.module.css";
+import classes from "./card.module.css";
 
 const style = {
   position: "absolute",
@@ -24,17 +24,24 @@ const style = {
   p: 4,
 };
 
-export default function ClassEditCard(props) {
+export default function ProjectEditCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [updatedData, setUpdatedData] = useState({
     name: "",
+    description: "",
+    image: "",
   });
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
     setUpdatedData((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const handleFileInputChange = (event) => {
+    setSelectedFile(event.target.files[0]);
   };
 
   const handleEdit = (event, id) => {
@@ -42,8 +49,7 @@ export default function ClassEditCard(props) {
     console.log(id);
 
     axios
-      .post(`http://localhost:8000/api/grade/${props.rowId}`, {
-        _method: "PUT",
+      .patch(`http://localhost:8000/project/edit/${props.rowId}`, {
         name: updatedData.name,
       })
       .then((response) => {
@@ -75,21 +81,50 @@ export default function ClassEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Class
+              Edit Project
             </Typography>
             <form>
               <Grid container spacing={1}>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder={props.adminValue}
-                    name="name"
-                    value={updatedData.name}
-                    label="Name"
+                    placeholder="Enter a project title"
+                    name="title"
+                    value={updatedData.title}
+                    label="Title"
                     onChange={handleFormChange}
-
-                    variant="outlined" 
-                    fullWidth 
+                    variant="outlined"
+                    fullWidth
                     required
+                  />
+                </Grid>
+                <Grid xs={12} sm={12} item>
+                  <TextField
+                    type="description"
+                    placeholder="Enter a project description"
+                    label="Description"
+                    variant="outlined"
+                    fullWidth
+                    required
+                  />
+                </Grid>
+                <Grid xs={12} sm={12} item>
+                  <TextField
+                    type="serviceName"
+                    placeholder="Enter a service name"
+                    label="Service Name"
+                    variant="outlined"
+                    fullWidth
+                    required
+                  />
+                </Grid>
+                <Grid xs={12} sm={12} item>
+                  <label htmlFor="myfile">Select a file:</label>
+                  <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    onChange={handleFileInputChange}
+                    className={classes.filesInput}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12}>
@@ -100,7 +135,7 @@ export default function ClassEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Class
+                    Edit Project
                   </Button>
                 </Grid>
               </Grid>
