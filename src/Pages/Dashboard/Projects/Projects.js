@@ -10,9 +10,6 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Classes from "./Project.module.css";
-import AddClassForm from "../../Components/addclass/addclass";
-import ClassEditCard from "../../Components/editclass/editclass";
-import ClassDeleteCard from "../../Components/deleteclass/deleteclass";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -40,8 +37,8 @@ const FixedTables = () => {
 
   const fetchDataByPagination = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/projects`);
-      setData(response.data.message.data);
+      const response = await axios.get(`http://localhost:5000/project`);
+      setData(response.data.message);
       setCounter(response.data.message);
       setIsLoading(true);
       console.log(response);
@@ -57,7 +54,7 @@ const FixedTables = () => {
   return (
     <>
       <>
-        <AddClassForm regetData={fetchDataByPagination} />
+        {/* <AddClassForm regetData={fetchDataByPagination} /> */}
         <TableContainer
           className={Classes.adminPage}
           component={Paper}
@@ -80,19 +77,13 @@ const FixedTables = () => {
             </TableHead>
             <TableBody>
               {data.map((row) => (
-                <StyledTableRow key={row.id}>
+                <StyledTableRow key={row._id}>
                   <StyledTableCell component="th" scope="row">
-                    {row.id}
+                    {row._id}
                   </StyledTableCell>
-                  <StyledTableCell>{row.name}</StyledTableCell>
-                  <StyledTableCell>
-                    {row.created_at.slice(0, 10)}
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    {row.updated_at.slice(0, 10)}
-                  </StyledTableCell>
-                  <StyledTableCell style={{ display: "flex" }}>
-                    <ClassEditCard
+                  <StyledTableCell>{row.title}</StyledTableCell>
+                  <StyledTableCell>{row.due.slice(0, 10)}</StyledTableCell>
+                  {/* <ClassEditCard
                       adminValue={row.name}
                       rowId={row.id}
                       regetData={fetchDataByPagination}
@@ -100,8 +91,7 @@ const FixedTables = () => {
                     <ClassDeleteCard
                       rowId={row.id}
                       regetData={fetchDataByPagination}
-                    />
-                  </StyledTableCell>
+                    /> */}
                 </StyledTableRow>
               ))}
             </TableBody>

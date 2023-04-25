@@ -17,12 +17,12 @@ function DashboardRoutes() {
       </div>
       <div className="App-container">
         <Routes>
-          <Route exact path="/sevice" element={<Services />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/kids" element={<Kids />} />
-          <Route path="/team" element={<Team />} />
+          <Route exact path="/admin/services" element={<Services />} />
+          <Route path="/admin/projects" element={<Projects />} />
+          <Route path="/admin/events" element={<Events />} />
+          <Route path="/admin/about" element={<About />} />
+          <Route path="/admin/kids" element={<Kids />} />
+          <Route path="/admin/team" element={<Team />} />
         </Routes>
       </div>
     </div>

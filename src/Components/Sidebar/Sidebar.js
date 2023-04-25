@@ -26,7 +26,7 @@ function Sidebar() {
         </div>
 
         <div className={classes.bar}>
-          <NavLink to={"/serices"}>
+          <NavLink to={"/services"}>
             <RxDashboard className={classes.icons} size={25} />
             <b></b>
             <u></u>
