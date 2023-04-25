@@ -1,7 +1,4 @@
 import * as React from "react";
-import classes from "./Project.module.css";
-import ProjectEditCard from "../../../Components/ProjectCards/ProjectEditCard";
-import ProjectDeleteCard from "../../../Components/ProjectCards/ProjectDeleteCard";
 import useFetch from "../../../Components/useFetch/useFetch";
 import FixedTables from "../../../Components/DashboardTable/Table";
 

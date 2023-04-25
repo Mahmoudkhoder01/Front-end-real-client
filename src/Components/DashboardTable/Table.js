@@ -30,7 +30,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const FixedTables = (cells, rows) => {
+const FixedTables = (props) => {
   return (
     <>
       <>
@@ -48,13 +48,13 @@ const FixedTables = (cells, rows) => {
             <TableHead></TableHead>
             <TableHead>
               <TableRow>
-                {cells.map((cell) => (
+                {props.cells.map((cell) => (
                   <StyledTableCell key={cell._id}>{cell}</StyledTableCell>
                 ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {props.rows.map((row) => (
                 <StyledTableRow key={row._id}>
                   <StyledTableCell>{row.title}</StyledTableCell>
                   <StyledTableCell>{row.description}</StyledTableCell>
