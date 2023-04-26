@@ -1,0 +1,13 @@
+.button{
+  background-color: #F19922;
+  color: white;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  margin: 20px auto;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: large;
+  cursor: pointer;
+}
