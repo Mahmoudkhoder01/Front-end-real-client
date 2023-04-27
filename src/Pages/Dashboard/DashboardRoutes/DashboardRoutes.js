@@ -8,6 +8,7 @@ import About from "../About/About";
 import Kids from "../Kids/Kids";
 import Team from "../Team/Team";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
+import login from "../Login/Login";
 
 function DashboardRoutes() {
   return (
