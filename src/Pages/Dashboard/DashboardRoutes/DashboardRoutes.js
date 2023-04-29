@@ -9,6 +9,7 @@ import Kids from "../Kids/Kids";
 import Team from "../Team/Team";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import login from "../Login/Login";
+import Email from "../Emails/email";
 
 function DashboardRoutes() {
   return (
@@ -24,6 +25,7 @@ function DashboardRoutes() {
           <Route path="/admin/about" element={<About />} />
           <Route path="/admin/kids" element={<Kids />} />
           <Route path="/admin/team" element={<Team />} />
+          <Route path="/admin/emails" element={<Email />} />
         </Routes>
       </div>
     </div>

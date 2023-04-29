@@ -74,6 +74,12 @@ function Sidebar() {
             <u></u>
             <span>Team</span>
           </NavLink>
+          <NavLink to={"/admin/emails"}>
+            <FaUserTie className={classes.icons} size={25} />
+            <b></b>
+            <u></u>
+            <span>Emails</span>
+          </NavLink>
         </div>
 
         <div className={classes.setting}>
