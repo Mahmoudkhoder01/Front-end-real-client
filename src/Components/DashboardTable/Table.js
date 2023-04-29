@@ -31,6 +31,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const FixedTables = (props) => {
+  
+  const dataObject = {
+    title: props.title,
+  }
   return (
     <>
       <>

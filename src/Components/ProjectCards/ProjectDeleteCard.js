@@ -29,14 +29,14 @@ export default function ProjectDeleteCard(props) {
   const handleDelete = (event) => {
     event.preventDefault();
     axios
-      .delete(`http://localhost:8000/api/grade/${props.rowId}`)
+      .delete(`http://localhost:5000/project/delete/${props.rowId}`)
       .then((response) => {
         setOpen(false);
         props.regetData();
-        toast.success("Class deleted successfully");
+        toast.success("Project deleted successfully");
       })
       .catch((error) => {
-        console.log("Error deleting class", error);
+        console.log("Error deleting Project", error);
         toast.error(error);
       });
   };
@@ -53,7 +53,7 @@ export default function ProjectDeleteCard(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Delete Class
+            Delete Project
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Grid container spacing={1}>

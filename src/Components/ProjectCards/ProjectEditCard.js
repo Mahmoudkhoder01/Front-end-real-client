@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,12 @@ import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import classes from "./card.module.css";
+
+// import date fields from mui
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const style = {
   position: "absolute",
@@ -29,11 +35,15 @@ export default function ProjectEditCard(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [updatedData, setUpdatedData] = useState({
-    name: "",
-    description: "",
-    image: "",
+    title: props.title,
+    description: props.description,
+    serviceName: props.serviceName,
+    due: props.due,
+    image: props.image,
   });
   const [selectedFile, setSelectedFile] = useState(null);
+
+  const [selectedDate, setSelectedDate] = useState(props.due);
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -44,25 +54,36 @@ export default function ProjectEditCard(props) {
     setSelectedFile(event.target.files[0]);
   };
 
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
   const handleEdit = (event, id) => {
     event.preventDefault();
     console.log(id);
 
     axios
-      .patch(`http://localhost:8000/project/edit/${props.rowId}`, {
-        name: updatedData.name,
+      .patch(`http://localhost:5000/project/edit/${props.rowId}`, {
+        title: updatedData.title,
+        description: updatedData.description,
+        serviceName: updatedData.serviceName,
+        due: updatedData.due,
+        image: updatedData.image,
       })
       .then((response) => {
         console.log(response);
         setUpdatedData({
-          name: "",
+          title: "",
+          description: "",
+          serviceName: "",
+          image: "",
         });
         setOpen(false);
         props.regetData();
-        toast.success("Class edited successfully");
+        toast.success("Project edited successfully");
       })
       .catch((error) => {
-        console.log("Error editing admin", error);
+        console.log("Error editing project", error);
         toast.error(error.response.data);
       });
   };
@@ -99,9 +120,11 @@ export default function ProjectEditCard(props) {
                 </Grid>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    type="description"
                     placeholder="Enter a project description"
+                    name="description"
+                    value={updatedData.description}
                     label="Description"
+                    onChange={handleFormChange}
                     variant="outlined"
                     fullWidth
                     required
@@ -109,13 +132,27 @@ export default function ProjectEditCard(props) {
                 </Grid>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    type="serviceName"
+                    name="serviceName"
+                    value={updatedData.serviceName}
                     placeholder="Enter a service name"
                     label="Service Name"
+                    onChange={handleFormChange}
                     variant="outlined"
                     fullWidth
                     required
                   />
+                </Grid>
+                <Grid xs={12} sm={12} item>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DemoContainer components={["DatePicker"]}>
+                      <DatePicker
+                        // value={selectedDate}
+                        label="Enter a due date"
+                        onChange={handleDateChange}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </DemoContainer>
+                  </LocalizationProvider>
                 </Grid>
                 <Grid xs={12} sm={12} item>
                   <label htmlFor="myfile">Select a file:</label>
