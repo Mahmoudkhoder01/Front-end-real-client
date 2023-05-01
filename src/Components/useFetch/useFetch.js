@@ -19,7 +19,7 @@ const useFetch = (url) => {
     fetchData();
   }, [url]);
 
-  const reFetcth = async () => {
+  const reFetch = async () => {
     setIsLoading(true);
     try {
       const res = await axios.get(`${process.env.REACT_APP_URL}${url}`);
@@ -29,7 +29,7 @@ const useFetch = (url) => {
     }
     setIsLoading(false);
   };
-  return { data, isLoading, error, reFetcth };
+  return { data, isLoading, error, reFetch };
 };
 
 export default useFetch;

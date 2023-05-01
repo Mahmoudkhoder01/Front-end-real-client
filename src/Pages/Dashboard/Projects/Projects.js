@@ -34,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const FixedTables = (props) => {
-  const { data, isLoading, error, reFetcth } = useFetch("project");
+  const { data, isLoading, error, reFetch } = useFetch("project");
 
   return (
     <>
@@ -88,10 +88,10 @@ const FixedTables = (props) => {
                       serviceName={row.service_id.name}
                       image={row.image}
                       due={row.due}
-                      rowId={row.id}
-                      // regetData={fetchDataByPagination}
+                      rowId={row._id}
+                      regetData={reFetch}
                     />
-                    <ProjectDeleteCard rowId={row._id} regetData={reFetcth} />
+                    <ProjectDeleteCard rowId={row._id} regetData={reFetch} />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
