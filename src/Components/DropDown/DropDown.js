@@ -7,10 +7,10 @@ import Select from "@mui/material/Select";
 import useFetch from "../useFetch/useFetch";
 
 export default function BasicSelect({ getServiceName }) {
-  const [age, setAge] = React.useState("");
+  const [service, setService] = React.useState([]);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setService(event.target.value);
   };
 
   const { data } = useFetch("service");
@@ -26,12 +26,16 @@ export default function BasicSelect({ getServiceName }) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          //   value={age}
+          value={service}
           label="Service Name"
           onChange={handleChange}
         >
           {data.map((e) => (
-            <MenuItem onClick={() => handleClick(e._id)} key={e._id}>
+            <MenuItem
+              key={e._id}
+              value={e.name}
+              onClick={() => handleClick(e._id)}
+            >
               {e.name}
             </MenuItem>
           ))}
