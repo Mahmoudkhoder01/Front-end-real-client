@@ -9,6 +9,7 @@ import Kids from "../Kids/Kids";
 import Team from "../Team/Team";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import login from "../Login/Login";
+import PrivateRoute from "../privateRoutes";
 
 function DashboardRoutes() {
   return (
@@ -18,12 +19,14 @@ function DashboardRoutes() {
       </div>
       <div className={Classes.AppContainer}>
         <Routes>
-          <Route exact path="/admin/services" element={<Services />} />
-          <Route path="/admin/projects" element={<Projects />} />
-          <Route path="/admin/events" element={<Events />} />
-          <Route path="/admin/about" element={<About />} />
-          <Route path="/admin/kids" element={<Kids />} />
-          <Route path="/admin/team" element={<Team />} />
+          <Route element={<PrivateRoute />}>
+            <Route exact path="/admin/services" element={<Services />} />
+            <Route path="/admin/projects" element={<Projects />} />
+            <Route path="/admin/events" element={<Events />} />
+            <Route path="/admin/about" element={<About />} />
+            <Route path="/admin/kids" element={<Kids />} />
+            <Route path="/admin/team" element={<Team />} />
+          </Route>
         </Routes>
       </div>
     </div>

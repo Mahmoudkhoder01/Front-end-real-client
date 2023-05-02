@@ -8,6 +8,7 @@ import centerLinear from "../../../Assets/Images/centerCirclelinear.svg";
 import bottomCircle from "../../../Assets/Images/bottomCircle.svg";
 import TextField from "@mui/material/TextField";
 import Button from "../../../Components/Button/Button";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../../userContext";
 import { useState, useContext } from "react";
 import axios from "axios";
@@ -19,7 +20,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
+  const navigate = useNavigate()
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -57,8 +58,10 @@ function Login() {
         setToken(authToken);
         setIsLoggedIn(true);
         setErrorMessage("");
+        navigate("/admin/services")
         toast.success("Login successful!");
         Cookies.set("token", authToken, { expires: 1 }); //1day
+        
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
