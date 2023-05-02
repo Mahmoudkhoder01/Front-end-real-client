@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -72,7 +72,8 @@ export default function ProjectEditCard(props) {
     formData.append("title", updatedData.title);
     formData.append("description", updatedData.description);
     formData.append("due", selectedDate);
-    formData.append("image", selectedFile, selectedFile.name);
+    formData.append("image", selectedFile);
+
     axios
       .patch(
         `${process.env.REACT_APP_URL}project/edit/${props.rowId}`,

@@ -13,6 +13,7 @@ import ProjectDeleteCard from "../../../Components/ProjectCards/ProjectDeleteCar
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
+import AddProjectForm from "../../../Components/ProjectCards/ProjectAddCard";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -34,12 +35,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const FixedTables = (props) => {
-  const { data, isLoading, error, reFetch } = useFetch("project");
+  const { data, isLoading, reFetch } = useFetch("project");
 
   return (
     <>
       <>
-        {/* <AddClassForm regetData={fetchDataByPagination} /> */}
+        <AddProjectForm regetData={reFetch} />
         <TableContainer
           className={Classes.adminPage}
           component={Paper}
