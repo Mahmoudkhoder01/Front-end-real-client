@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Classes from "./Project.module.css";
+import Classes from "./Services.module.css";
 import ProjectEditCard from "../../../Components/ProjectCards/ProjectEditCard";
 import ProjectDeleteCard from "../../../Components/ProjectCards/ProjectDeleteCard";
 
@@ -35,7 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const FixedTables = (props) => {
+const FixedTables = () => {
   const { data, isLoading, reFetch } = useFetch("service");
 
   return (
@@ -82,11 +82,9 @@ const FixedTables = (props) => {
                       }}
                     >
                       <ProjectEditCard
-                        title={row.title}
+                        name={row.name}
                         description={row.description}
-                        serviceName={row.service_id.name}
                         image={row.image}
-                        due={row.due}
                         rowId={row._id}
                         regetData={reFetch}
                       />
