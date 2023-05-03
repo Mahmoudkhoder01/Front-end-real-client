@@ -30,9 +30,9 @@ export default function ProjectDeleteCard(props) {
     event.preventDefault();
     axios
       .delete(`http://localhost:5000/project/delete/${props.rowId}`)
-      .then((response) => {
+      .then(async (response) => {
         setOpen(false);
-        props.regetData();
+        await props.regetData();
         toast.success("Project deleted successfully");
       })
       .catch((error) => {

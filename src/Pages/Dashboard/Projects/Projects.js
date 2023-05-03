@@ -14,6 +14,7 @@ import ProjectDeleteCard from "../../../Components/ProjectCards/ProjectDeleteCar
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
 import AddProjectForm from "../../../Components/ProjectCards/ProjectAddCard";
+import Loading from "../../../Components/LoadingAnimation/Loading";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -39,67 +40,69 @@ const FixedTables = (props) => {
 
   return (
     <>
-      <>
-        <AddProjectForm regetData={reFetch} />
-        <TableContainer
-          className={Classes.adminPage}
-          component={Paper}
-          initialState={{
-            pagination: {
-              paginationModel: { pageSize: 10, page: 0 },
-            },
-          }}
-        >
-          <Table>
-            <TableHead></TableHead>
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>TITLE</StyledTableCell>
-                <StyledTableCell>DESCRIPTION</StyledTableCell>
-                <StyledTableCell>SREVICE NAME</StyledTableCell>
-                <StyledTableCell>IMAGE</StyledTableCell>
-                <StyledTableCell>DUE</StyledTableCell>
-                <StyledTableCell></StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((row) => (
-                <StyledTableRow key={row._id}>
-                  <StyledTableCell>{row.title}</StyledTableCell>
-                  <StyledTableCell>{row.description}</StyledTableCell>
-                  <StyledTableCell>{row.service_id.name}</StyledTableCell>
-                  <StyledTableCell>
-                    <img
-                      src={`${process.env.REACT_APP_URL}${row.image}`}
-                      alt="img"
-                      className={Classes.image}
-                    />
-                  </StyledTableCell>
-                  <StyledTableCell>{row.due.slice(0, 10)}</StyledTableCell>
-                  <StyledTableCell
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <ProjectEditCard
-                      title={row.title}
-                      description={row.description}
-                      serviceName={row.service_id.name}
-                      image={row.image}
-                      due={row.due}
-                      rowId={row._id}
-                      regetData={reFetch}
-                    />
-                    <ProjectDeleteCard rowId={row._id} regetData={reFetch} />
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <AddProjectForm regetDataAgain={reFetch} />
+          <TableContainer
+            className={Classes.adminPage}
+            component={Paper}
+            initialState={{
+              pagination: {
+                paginationModel: { pageSize: 10, page: 0 },
+              },
+            }}
+          >
+            <Table>
+              <TableHead></TableHead>
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>TITLE</StyledTableCell>
+                  <StyledTableCell>DESCRIPTION</StyledTableCell>
+                  <StyledTableCell>SREVICE NAME</StyledTableCell>
+                  <StyledTableCell>IMAGE</StyledTableCell>
+                  <StyledTableCell>DUE</StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data.map((row) => (
+                  <StyledTableRow key={row._id}>
+                    <StyledTableCell>{row.title}</StyledTableCell>
+                    <StyledTableCell>{row.description}</StyledTableCell>
+                    <StyledTableCell>{row.service_id.name}</StyledTableCell>
+                    <StyledTableCell>
+                      <img
+                        src={`${process.env.REACT_APP_URL}${row.image}`}
+                        alt="img"
+                        className={Classes.image}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell>{row.due.slice(0, 10)}</StyledTableCell>
+                    <StyledTableCell
+                      sx={{
+                        display: "flex",
+                      }}
+                    >
+                      <ProjectEditCard
+                        title={row.title}
+                        description={row.description}
+                        serviceName={row.service_id.name}
+                        image={row.image}
+                        due={row.due}
+                        rowId={row._id}
+                        regetData={reFetch}
+                      />
+                      <ProjectDeleteCard rowId={row._id} regetData={reFetch} />
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </>
+      )}
     </>
   );
 };

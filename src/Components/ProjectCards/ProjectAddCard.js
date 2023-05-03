@@ -77,7 +77,7 @@ export default function AddProjectForm(props) {
       );
       console.log(response.data);
       setOpen(false);
-      props.regetDataAgain();
+      await props.regetDataAgain();
       toast.success("Student added succefully");
     } catch (error) {
       console.error(error);

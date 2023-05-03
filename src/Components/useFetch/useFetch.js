@@ -10,8 +10,9 @@ const useFetch = (url) => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const res = await axios.get(`${process.env.REACT_APP_URL}${url}`, );
+        const res = await axios.get(`${process.env.REACT_APP_URL}${url}`);
         setData(res.data.message);
+        setIsLoading(false);
       } catch (err) {
         setError(err);
       }

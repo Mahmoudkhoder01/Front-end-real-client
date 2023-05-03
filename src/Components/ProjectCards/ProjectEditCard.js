@@ -79,7 +79,7 @@ export default function ProjectEditCard(props) {
         `${process.env.REACT_APP_URL}project/edit/${props.rowId}`,
         formData
       )
-      .then((response) => {
+      .then(async (response) => {
         console.log(response);
         setUpdatedData({
           title: props.title,
@@ -87,7 +87,7 @@ export default function ProjectEditCard(props) {
           serviceName: props.serviceName,
         });
         setOpen(false);
-        props.regetData();
+        await props.regetData();
         toast.success("Project edited successfully");
       })
       .catch((error) => {
