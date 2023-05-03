@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-
+import Classes from "./dashboard.module.css";
 // import pages
 import Services from "../Services/Services";
 import Projects from "../Projects/Projects";
@@ -8,21 +8,24 @@ import About from "../About/About";
 import Kids from "../Kids/Kids";
 import Team from "../Team/Team";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
+import login from "../Login/Login";
+import Email from "../Emails/email";
 
 function DashboardRoutes() {
   return (
-    <div className="App">
-      <div className="App-sidebar">
+    <div className={Classes.App}>
+      <div className={Classes.AppSidebar}>
         <Sidebar />
       </div>
-      <div className="App-container">
+      <div className={Classes.AppContainer}>
         <Routes>
-          <Route exact path="/sevice" element={<Services />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/kids" element={<Kids />} />
-          <Route path="/team" element={<Team />} />
+          <Route exact path="/admin/services" element={<Services />} />
+          <Route path="/admin/projects" element={<Projects />} />
+          <Route path="/admin/events" element={<Events />} />
+          <Route path="/admin/about" element={<About />} />
+          <Route path="/admin/kids" element={<Kids />} />
+          <Route path="/admin/team" element={<Team />} />
+          <Route path="/admin/emails" element={<Email />} />
         </Routes>
       </div>
     </div>

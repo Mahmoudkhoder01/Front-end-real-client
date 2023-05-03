@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 // Import Css Files
 import classes from "./Sidebar.module.css";
@@ -10,10 +10,23 @@ import { MdOutlineClass } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { HiTableCells } from "react-icons/hi2";
 import { BiUser } from "react-icons/bi";
-import { FaUserCheck, FaUserTie } from "react-icons/fa";
+import { TbMoodKid } from "react-icons/tb";
 import { HiOutlineLogout } from "react-icons/hi";
+import { AiOutlineMail, AiOutlineTeam } from "react-icons/ai";
 
 function Sidebar() {
+  const currentPath = useLocation().pathname;
+  if (
+    currentPath === "/" ||
+    currentPath === "/about" ||
+    currentPath === "/events" ||
+    currentPath === "/kids" ||
+    currentPath === "/projects" ||
+    currentPath === "/team" ||
+    currentPath === "/services"
+  )
+    return null;
+
   return (
     <Fragment>
       <nav className={classes.sidebar}>
@@ -26,41 +39,47 @@ function Sidebar() {
         </div>
 
         <div className={classes.bar}>
-          <NavLink to={"/serices"}>
+          <NavLink to={"/admin/services"}>
             <RxDashboard className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Services</span>
           </NavLink>
-          <NavLink to={"/projects"}>
+          <NavLink to={"/admin/projects"}>
             <MdOutlineClass className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Projects</span>
           </NavLink>
-          <NavLink to={"/events"}>
+          <NavLink to={"/admin/events"}>
             <HiTableCells className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Events</span>
           </NavLink>
-          <NavLink to={"/about"}>
+          <NavLink to={"/admin/about"}>
             <BiUser className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>About</span>
           </NavLink>
-          <NavLink to={"/kids"}>
-            <FaUserCheck className={classes.icons} size={25} />
+          <NavLink to={"/admin/kids"}>
+            <TbMoodKid className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Kids</span>
           </NavLink>
-          <NavLink to={"/team"}>
-            <FaUserTie className={classes.icons} size={25} />
+          <NavLink to={"/admin/team"}>
+            <AiOutlineTeam className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Team</span>
+          </NavLink>
+          <NavLink to={"/admin/emails"}>
+            <AiOutlineMail className={classes.icons} size={25} />
+            <b></b>
+            <u></u>
+            <span>Emails</span>
           </NavLink>
         </div>
 

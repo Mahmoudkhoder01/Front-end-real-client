@@ -7,12 +7,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Classes from "./Project.module.css";
-import AddClassForm from "../../Components/addclass/addclass";
-import ClassEditCard from "../../Components/editclass/editclass";
-import ClassDeleteCard from "../../Components/deleteclass/deleteclass";
+import ProjectEditCard from "../../../Components/ProjectCards/ProjectEditCard";
+import ProjectDeleteCard from "../../../Components/ProjectCards/ProjectDeleteCard";
+
+// import reusabel fetch data
+import useFetch from "../../../Components/useFetch/useFetch";
+import AddProjectForm from "../../../Components/ProjectCards/ProjectAddCard";
+import Loading from "../../../Components/LoadingAnimation/Loading";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -33,81 +35,74 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const FixedTables = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const [counter, setCounter] = useState([]);
-
-  const fetchDataByPagination = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/projects`);
-      setData(response.data.message.data);
-      setCounter(response.data.message);
-      setIsLoading(true);
-      console.log(response);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchDataByPagination();
-  }, []);
+const FixedTables = (props) => {
+  const { data, isLoading, reFetch } = useFetch("project");
 
   return (
     <>
-      <>
-        <AddClassForm regetData={fetchDataByPagination} />
-        <TableContainer
-          className={Classes.adminPage}
-          component={Paper}
-          initialState={{
-            pagination: {
-              paginationModel: { pageSize: 10, page: 0 },
-            },
-          }}
-        >
-          <Table>
-            <TableHead></TableHead>
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>ID</StyledTableCell>
-                <StyledTableCell>NAME</StyledTableCell>
-                <StyledTableCell>CRAETED AT</StyledTableCell>
-                <StyledTableCell>UPDATET AT</StyledTableCell>
-                <StyledTableCell></StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((row) => (
-                <StyledTableRow key={row.id}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.id}
-                  </StyledTableCell>
-                  <StyledTableCell>{row.name}</StyledTableCell>
-                  <StyledTableCell>
-                    {row.created_at.slice(0, 10)}
-                  </StyledTableCell>
-                  <StyledTableCell>
-                    {row.updated_at.slice(0, 10)}
-                  </StyledTableCell>
-                  <StyledTableCell style={{ display: "flex" }}>
-                    <ClassEditCard
-                      adminValue={row.name}
-                      rowId={row.id}
-                      regetData={fetchDataByPagination}
-                    />
-                    <ClassDeleteCard
-                      rowId={row.id}
-                      regetData={fetchDataByPagination}
-                    />
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <AddProjectForm regetDataAgain={reFetch} />
+          <TableContainer
+            className={Classes.adminPage}
+            component={Paper}
+            initialState={{
+              pagination: {
+                paginationModel: { pageSize: 10, page: 0 },
+              },
+            }}
+          >
+            <Table>
+              <TableHead></TableHead>
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>TITLE</StyledTableCell>
+                  <StyledTableCell>DESCRIPTION</StyledTableCell>
+                  <StyledTableCell>SREVICE NAME</StyledTableCell>
+                  <StyledTableCell>IMAGE</StyledTableCell>
+                  <StyledTableCell>DUE</StyledTableCell>
+                  <StyledTableCell></StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data.map((row) => (
+                  <StyledTableRow key={row._id}>
+                    <StyledTableCell>{row.title}</StyledTableCell>
+                    <StyledTableCell>{row.description}</StyledTableCell>
+                    <StyledTableCell>{row.service_id.name}</StyledTableCell>
+                    <StyledTableCell>
+                      <img
+                        src={`${process.env.REACT_APP_URL}${row.image}`}
+                        alt="img"
+                        className={Classes.image}
+                      />
+                    </StyledTableCell>
+                    <StyledTableCell>{row.due.slice(0, 10)}</StyledTableCell>
+                    <StyledTableCell
+                      sx={{
+                        display: "flex",
+                      }}
+                    >
+                      <ProjectEditCard
+                        title={row.title}
+                        description={row.description}
+                        serviceName={row.service_id.name}
+                        image={row.image}
+                        due={row.due}
+                        rowId={row._id}
+                        regetData={reFetch}
+                      />
+                      <ProjectDeleteCard rowId={row._id} regetData={reFetch} />
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </>
+      )}
     </>
   );
 };
