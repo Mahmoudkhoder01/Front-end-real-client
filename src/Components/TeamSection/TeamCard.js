@@ -15,10 +15,10 @@ export default function TeamCard() {
         style={{ height: '70%' }}
       />
       <CardContent sx={{display: 'flex', flexDirection:'column', alignItems:'center'}}>
-        <Typography  variant="h4" style={{fontWeight:'600'}}>
+        <Typography  variant="h5" style={{fontWeight:'600',marginBottom:'10px'}}>
           Lizard
         </Typography>
-        <Typography variant="h6" color="text.secondary"  style={{fontWeight:'500'}}>
+        <Typography  color="text.secondary"  style={{fontWeight:'500', fontSize:'1rem'}}>
           hi jaljflka;jlak;jaljflka       
         </Typography>
       </CardContent>

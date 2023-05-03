@@ -10,10 +10,9 @@ import bottomCircle from '../../Assets/Images/bottomCircle.svg'
 export default function TeamSection() {
   return (
     <section className={styles.TeamSection}>
-        <div className={styles.TopSection}>
-            
-            <h2 className={styles.HeadingTitle}>OUR TEAM</h2>
-            <img src={bottomCircle} className={styles.TopGoldCircle}/>     
+        <div className={styles.TopSection}>    
+            <h6 className={styles.HeadingTitle}>OUR TEAM</h6>
+            <img src={bottomCircle} alt='design' className={styles.TopGoldCircle}/>     
         </div>
         <div className={styles.cardsWrapper}>
             <TeamCard />
