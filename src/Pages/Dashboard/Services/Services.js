@@ -8,8 +8,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Classes from "./Services.module.css";
-import ProjectEditCard from "../../../Components/ProjectCards/ProjectEditCard";
-import ProjectDeleteCard from "../../../Components/ProjectCards/ProjectDeleteCard";
+import ServiceEditCard from "../../../Components/ServiceCards/ServiceEditCard";
+import ServiceDeleteCard from "../../../Components/ServiceCards/ServiceDeleteCard";
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
@@ -81,14 +81,14 @@ const FixedTables = () => {
                         display: "flex",
                       }}
                     >
-                      <ProjectEditCard
+                      <ServiceEditCard
                         name={row.name}
                         description={row.description}
                         image={row.image}
                         rowId={row._id}
                         regetData={reFetch}
                       />
-                      <ProjectDeleteCard rowId={row._id} regetData={reFetch} />
+                      <ServiceDeleteCard rowId={row._id} regetData={reFetch} />
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}

@@ -24,7 +24,7 @@ const style = {
   p: 4,
 };
 
-export default function ProjectEditCard(props) {
+export default function ServiceEditCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -54,21 +54,20 @@ export default function ProjectEditCard(props) {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("title", updatedData.name);
+    formData.append("name", updatedData.name);
     formData.append("description", updatedData.description);
     formData.append("image", selectedFile);
 
     axios
       .patch(
-        `${process.env.REACT_APP_URL}project/edit/${props.rowId}`,
+        `${process.env.REACT_APP_URL}service/edit/${props.rowId}`,
         formData
       )
       .then(async (response) => {
         console.log(response);
         setUpdatedData({
-          title: props.title,
+          name: props.name,
           description: props.description,
-          serviceName: props.serviceName,
         });
         setOpen(false);
         await props.regetData();
