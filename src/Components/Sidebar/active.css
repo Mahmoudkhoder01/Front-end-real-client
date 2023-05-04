@@ -1,5 +1,5 @@
 .active {
-    background-color: #fff;
+    background-color: #DB1866;
     font-weight: bold;
     border-radius: 20px;
     -webkit-border-radius: 20px;
@@ -7,10 +7,11 @@
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
     width: 112%;
-    color: black;
+    color: white;
     position: relative;
     display: flex;
     justify-content: flex-start;
+    box-sizing: content-box !important;
 }
 
 nav .active b {
@@ -19,7 +20,7 @@ nav .active b {
     left: 0;
     width: 100%;
     height: 20px;
-    background-color: white;
+    background-color: #DB1866;
 }
 
 nav .active u {
@@ -28,7 +29,7 @@ nav .active u {
     left: 0;
     width: 100%;
     height: 20px;
-    background-color: white;
+    background-color: #DB1866;
 }
 
 
@@ -39,7 +40,7 @@ nav .active b::before {
     left: -1rem;
     width: 99%;
     height: 100%;
-    background-color: #5541D7;
+    background-color: #F19922;
     border-bottom-right-radius: 20px;
 }
 
@@ -50,7 +51,7 @@ nav .active u::before {
     left: -1rem;
     width: 99%;
     height: 100%;
-    background-color: #5541D7;
+    background-color: #F19922;
     border-top-right-radius: 20px;
 }
 

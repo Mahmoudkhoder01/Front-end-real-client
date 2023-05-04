@@ -14,6 +14,9 @@ import { TbMoodKid } from "react-icons/tb";
 import { HiOutlineLogout } from "react-icons/hi";
 import { AiOutlineMail, AiOutlineTeam } from "react-icons/ai";
 
+// Import Logo
+import logo from "../../Assets/Images/dashboardLogo.svg"
+
 function Sidebar() {
   const currentPath = useLocation().pathname;
   if (
@@ -33,7 +36,7 @@ function Sidebar() {
         <div>
           <img
             className={classes.logo}
-            src={process.env.PUBLIC_URL + "/Assets/LMS.svg"}
+            src={logo}
             alt="SVG Logo"
           />
         </div>
