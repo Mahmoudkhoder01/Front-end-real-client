@@ -8,8 +8,7 @@ import PrivateRoute from "./Pages/Dashboard/privateRoutes";
 
 
 function App() {
-
-  const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {

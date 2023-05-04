@@ -9,7 +9,9 @@ import Kids from "../Kids/Kids";
 import Team from "../Team/Team";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import login from "../Login/Login";
+import Email from "../Emails/email";
 import PrivateRoute from "../privateRoutes";
+
 
 function DashboardRoutes() {
   return (
