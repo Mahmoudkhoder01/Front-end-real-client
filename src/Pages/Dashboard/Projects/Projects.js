@@ -52,6 +52,9 @@ const FixedTables = (props) => {
               pagination: {
                 paginationModel: { pageSize: 10, page: 0 },
               },
+              pagination: {
+                paginationModel: { pageSize: 10, page: 0 },
+              },
             }}
           >
             <Table>

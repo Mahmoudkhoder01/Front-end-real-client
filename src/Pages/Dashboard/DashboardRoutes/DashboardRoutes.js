@@ -4,7 +4,7 @@ import Classes from "./dashboard.module.css";
 import Services from "../Services/Services";
 import Projects from "../Projects/Projects";
 import Events from "../Events/Event";
-import About from "../About/About";
+import Users from "../Users/Users";
 import Kids from "../Kids/Kids";
 import Team from "../Team/Team";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
@@ -25,7 +25,7 @@ function DashboardRoutes() {
             <Route exact path="/admin/services" element={<Services />} />
             <Route path="/admin/projects" element={<Projects />} />
             <Route path="/admin/events" element={<Events />} />
-            <Route path="/admin/about" element={<About />} />
+            <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/kids" element={<Kids />} />
             <Route path="/admin/team" element={<Team />} />
           </Route>
