@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
-import classes from "./About.module.css";
+import classes from "./Users.module.css";
 
 
 
 function Dashboard() {
-  const [image, setImage] = useState('img/default.jpg');
-  const [description, setDescription] = useState('Default description');
 
-  const handleImageChange = (event) => {
-    setImage(URL.createObjectURL(event.target.files[0]));
-  }
+  // const handleImageChange = (event) => {
+  //   setImage(URL.createObjectURL(event.target.files[0]));
+  // }
 
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  }
+  // const handleDescriptionChange = (event) => {
+  //   setDescription(event.target.value);
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,7 +22,7 @@ function Dashboard() {
     <div className={classes.container}>
      <div className={classes.vectorContainer}>
         
-        <input type="file" className={classes.formControlFile} id="image" onChange={handleImageChange} />
+        <input type="file" className={classes.formControlFile} id="image" />
       </div>
       
       <form onSubmit={handleSubmit}>
@@ -34,7 +32,7 @@ function Dashboard() {
       
         <div className={classes.formGroup}>
           <label htmlFor="description"></label>
-          <textarea className={classes.formControl} id="description" rows="3" value={description} onChange={handleDescriptionChange}></textarea>
+          <textarea className={classes.formControl} id="description" rows="3" ></textarea>
         </div>
         <button type="submit" className={classes.btnPrimary}>Save Changes</button>
       </form>

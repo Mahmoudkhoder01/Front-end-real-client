@@ -16,12 +16,13 @@ import { AiOutlineMail, AiOutlineTeam } from "react-icons/ai";
 
 // Import Logo
 import logo from "../../Assets/Images/dashboardLogo.svg"
+import Cookies from "js-cookie";
 
 function Sidebar() {
   const currentPath = useLocation().pathname;
   if (
     currentPath === "/" ||
-    currentPath === "/about" ||
+    currentPath === "/users" ||
     currentPath === "/events" ||
     currentPath === "/kids" ||
     currentPath === "/projects" ||
@@ -60,11 +61,11 @@ function Sidebar() {
             <u></u>
             <span>Events</span>
           </NavLink>
-          <NavLink to={"/admin/about"}>
+          <NavLink to={"/admin/users"}>
             <BiUser className={classes.icons} size={25} />
             <b></b>
             <u></u>
-            <span>About</span>
+            <span>Admins</span>
           </NavLink>
           <NavLink to={"/admin/kids"}>
             <TbMoodKid className={classes.icons} size={25} />
@@ -86,7 +87,7 @@ function Sidebar() {
           </NavLink>
         </div>
 
-        <div className={classes.setting}>
+        <div className={classes.setting} onClick={async()=> {await Cookies.remove("token")}}>
           <Link to={"/"}>
             <HiOutlineLogout size={30} className={classes.logOut} />
             <span>Logout</span>
