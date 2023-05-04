@@ -8,7 +8,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { toast } from "react-toastify";
-import classes from "./EmailDelet.module.css";
 
 const style = {
   position: "absolute",
@@ -22,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function EmailDeleteCard(props) {
+export default function ProjectDeleteCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -30,11 +29,11 @@ export default function EmailDeleteCard(props) {
   const handleDelete = (event) => {
     event.preventDefault();
     axios
-      .delete(`${process.env.REACT_APP_URL}api/contactus/${props.Id}`)
+      .delete(`h${process.env.REACT_APP_URL}api/events/${props.rowId}`)
       .then(async (response) => {
         setOpen(false);
         await props.regetData();
-        toast.success("Email deleted successfully");
+        toast.success("Project deleted successfully");
       })
       .catch((error) => {
         console.log("Error deleting Project", error);
@@ -44,7 +43,7 @@ export default function EmailDeleteCard(props) {
   return (
     <div>
       <IconButton onClick={handleOpen}>
-        <DeleteIcon className={classes.deleteIcon} />
+        <DeleteIcon />
       </IconButton>
       <Modal
         open={open}
@@ -54,7 +53,7 @@ export default function EmailDeleteCard(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Delete Email
+            Delete Event
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Grid container spacing={1}>

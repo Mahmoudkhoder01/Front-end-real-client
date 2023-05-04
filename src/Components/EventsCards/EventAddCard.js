@@ -38,7 +38,7 @@ export default function AddProjectForm(props) {
   const handleClose = () => setOpen(false);
 
   const [newData, setNewData] = useState({
-    title: "",
+    name: "",
     description: "",
     serviceName: "",
   });
@@ -64,7 +64,7 @@ export default function AddProjectForm(props) {
     setSelectedServiceId(service_id);
 
     let newProject = new FormData();
-    newProject.append("title", newData.title);
+    newProject.append("name", newData.name);
     newProject.append("description", newData.description);
     newProject.append("service_id", selectedServiceId);
     newProject.append("due", selectedDate);
@@ -72,7 +72,7 @@ export default function AddProjectForm(props) {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}project`,
+        `${process.env.REACT_APP_URL}api/events`,
         newProject
       );
       console.log(response.data);
@@ -109,9 +109,9 @@ export default function AddProjectForm(props) {
             <Grid container spacing={1}>
               <Grid xs={12} sm={12} item>
                 <TextField
-                  placeholder="Enter a title"
-                  name="title"
-                  label="Title"
+                  placeholder="Enter a name"
+                  name="name"
+                  label="Name"
                   onChange={handleFormChange}
                   variant="outlined"
                   fullWidth
