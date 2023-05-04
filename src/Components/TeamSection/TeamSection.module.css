@@ -25,9 +25,10 @@
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  column-gap: 30px;
+  row-gap: 20px;
   height: 530px;
-
+  margin: 0 15%;
 }
 .topcircleBottom {
   position: absolute;
