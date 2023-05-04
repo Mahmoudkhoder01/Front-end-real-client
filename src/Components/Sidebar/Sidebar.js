@@ -87,7 +87,7 @@ function Sidebar() {
           </NavLink>
         </div>
 
-        <div className={classes.setting} onClick={async()=> {await Cookies.remove("token")}}>
+        <div className={classes.setting} onClick={()=> { Cookies.remove("token")}}>
           <Link to={"/"}>
             <HiOutlineLogout size={30} className={classes.logOut} />
             <span>Logout</span>
