@@ -119,9 +119,6 @@ export default function AddServiceForm(props) {
                   required
                 />
               </Grid>
-              <Grid item xs={6} sm={12}>
-                <DropDown getServiceName={handleAddProject} />
-              </Grid>
               <Grid xs={12} sm={12} item>
                 <label htmlFor="myfile">Select a file:</label>
                 <input

@@ -71,7 +71,7 @@ export default function ServiceEditCard(props) {
         });
         setOpen(false);
         await props.regetData();
-        toast.success("Project edited successfully");
+        toast.success("Event edited successfully");
       })
       .catch((error) => {
         console.log("Error editing project", error);

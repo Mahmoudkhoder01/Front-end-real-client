@@ -29,7 +29,7 @@ export default function ProjectDeleteCard(props) {
   const handleDelete = (event) => {
     event.preventDefault();
     axios
-      .delete(`h${process.env.REACT_APP_URL}api/events/${props.rowId}`)
+      .delete(`${process.env.REACT_APP_URL}api/events/${props.rowId}`)
       .then(async (response) => {
         setOpen(false);
         await props.regetData();

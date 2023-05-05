@@ -18,7 +18,7 @@ import AddServiceForm from "../../../Components/ServiceCards/ServiceAddCard";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#5541D7",
+    backgroundColor: "#DB1866",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
