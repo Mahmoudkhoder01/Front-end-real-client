@@ -78,10 +78,10 @@ export default function AddProjectForm(props) {
       console.log(response.data);
       setOpen(false);
       await props.regetDataAgain();
-      toast.success("Student added succefully");
+      toast.success("Project added succefully");
     } catch (error) {
       console.error(error);
-      toast.error("Student added failed");
+      toast.error("Project added failed");
     }
   };
 
@@ -93,7 +93,7 @@ export default function AddProjectForm(props) {
         onClick={handleOpen}
       >
         <FiPlus />
-        label Add Student
+        Add Project
       </button>
       <Modal
         open={open}
@@ -103,7 +103,7 @@ export default function AddProjectForm(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Student
+            Add New Project
           </Typography>
           <form>
             <Grid container spacing={1}>
@@ -159,7 +159,7 @@ export default function AddProjectForm(props) {
                   className={classes.addButton}
                   onClick={handleAddProject}
                 >
-                  Add New Student
+                  Add New Project
                 </Button>
               </Grid>
             </Grid>

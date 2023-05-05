@@ -13,8 +13,8 @@ import EventDeleteCard from "../../../Components/EventsCards/EventDeleteCard";
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
-import AddProjectForm from "../../../Components/ProjectCards/ProjectAddCard";
 import Loading from "../../../Components/LoadingAnimation/Loading";
+import AddEventForm from "../../../Components/EventsCards/EventAddCard";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -44,14 +44,11 @@ const FixedTables = (props) => {
         <Loading />
       ) : (
         <>
-          <AddProjectForm regetDataAgain={reFetch} />
+          <AddEventForm regetDataAgain={reFetch} />
           <TableContainer
             className={Classes.adminPage}
             component={Paper}
             initialState={{
-              pagination: {
-                paginationModel: { pageSize: 10, page: 0 },
-              },
               pagination: {
                 paginationModel: { pageSize: 10, page: 0 },
               },

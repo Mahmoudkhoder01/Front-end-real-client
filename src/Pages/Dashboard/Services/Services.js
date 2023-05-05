@@ -13,8 +13,8 @@ import ServiceDeleteCard from "../../../Components/ServiceCards/ServiceDeleteCar
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
-import AddProjectForm from "../../../Components/ProjectCards/ProjectAddCard";
 import Loading from "../../../Components/LoadingAnimation/Loading";
+import AddServiceForm from "../../../Components/ServiceCards/ServiceAddCard";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -44,7 +44,7 @@ const FixedTables = () => {
         <Loading />
       ) : (
         <>
-          <AddProjectForm regetDataAgain={reFetch} />
+          <AddServiceForm regetDataAgain={reFetch} />
           <TableContainer
             className={Classes.adminPage}
             component={Paper}

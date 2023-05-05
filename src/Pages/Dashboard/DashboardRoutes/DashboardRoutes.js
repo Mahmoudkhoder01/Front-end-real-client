@@ -12,7 +12,6 @@ import login from "../Login/Login";
 import Email from "../Emails/email";
 import PrivateRoute from "../privateRoutes";
 
-
 function DashboardRoutes() {
   return (
     <div className={Classes.App}>
@@ -28,6 +27,7 @@ function DashboardRoutes() {
             <Route path="/admin/users" element={<Users />} />
             <Route path="/admin/kids" element={<Kids />} />
             <Route path="/admin/team" element={<Team />} />
+            <Route path="/admin/emails" element={<Email />} />
           </Route>
         </Routes>
       </div>
