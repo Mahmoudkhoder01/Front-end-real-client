@@ -60,8 +60,12 @@ export default function AddEventForm(props) {
     setNewData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleAddProject = async (service_id) => {
+  const addsServiceId = (service_id) => {
     setSelectedServiceId(service_id);
+  };
+
+  const handleAddProject = async (event) => {
+    event.preventDefault();
 
     let newEvent = new FormData();
     newEvent.append("name", newData.name);
@@ -130,7 +134,7 @@ export default function AddEventForm(props) {
                 />
               </Grid>
               <Grid item xs={6} sm={12}>
-                <DropDown getServiceName={handleAddProject} />
+                <DropDown getServiceName={addsServiceId} />
               </Grid>
               <Grid xs={12} sm={12} item>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>

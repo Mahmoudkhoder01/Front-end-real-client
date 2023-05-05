@@ -6,7 +6,6 @@ import centerCircle from "../../../Assets/Images/centerCircle1.svg";
 import bottomRightCircle from "../../../Assets/Images/centerCirclelinear.svg";
 
 export default function About() {
-
   return (
     <div className={classes.container}>
       <img

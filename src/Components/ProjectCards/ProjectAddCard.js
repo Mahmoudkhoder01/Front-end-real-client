@@ -11,6 +11,7 @@ import Grid from "@mui/material/Grid";
 import { toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
 import DropDown from "../DropDown/DropDown";
+
 // import date fields from mui
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -48,7 +49,7 @@ export default function AddProjectForm(props) {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = (date) => {
-    setSelectedDate(props.due);
+    setSelectedDate(date);
   };
 
   const handleFileInputChange = (event) => {
@@ -60,9 +61,12 @@ export default function AddProjectForm(props) {
     setNewData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleAddProject = async (service_id) => {
+  const addsServiceId = (service_id) => {
     setSelectedServiceId(service_id);
+  };
 
+  const handleAddProject = async (event) => {
+    event.preventDefault();
     let newProject = new FormData();
     newProject.append("title", newData.title);
     newProject.append("description", newData.description);
@@ -130,7 +134,7 @@ export default function AddProjectForm(props) {
                 />
               </Grid>
               <Grid item xs={6} sm={12}>
-                <DropDown getServiceName={handleAddProject} />
+                <DropDown getServiceName={addsServiceId} />
               </Grid>
               <Grid xs={12} sm={12} item>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>

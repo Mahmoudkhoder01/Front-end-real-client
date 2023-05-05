@@ -10,11 +10,6 @@ import classes from "./card.module.css";
 import Grid from "@mui/material/Grid";
 import { toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
-import DropDown from "../DropDown/DropDown";
-// import date fields from mui
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const style = {
   position: "absolute",
@@ -32,7 +27,7 @@ const style = {
   },
 };
 
-export default function AddServiceForm(props) {
+export default function AddTeamForm(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -63,16 +58,16 @@ export default function AddServiceForm(props) {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}service`,
+        `${process.env.REACT_APP_URL}team`,
         newProject
       );
       console.log(response.data);
       setOpen(false);
       await props.regetDataAgain();
-      toast.success("Student added succefully");
+      toast.success("Team member added succefully");
     } catch (error) {
       console.error(error);
-      toast.error("Student added failed");
+      toast.error("Team member added failed");
     }
   };
 
@@ -84,7 +79,7 @@ export default function AddServiceForm(props) {
         onClick={handleOpen}
       >
         <FiPlus />
-        Add Service
+        Add Team Member
       </button>
       <Modal
         open={open}
@@ -137,7 +132,7 @@ export default function AddServiceForm(props) {
                   className={classes.addButton}
                   onClick={handleAddProject}
                 >
-                  Add New Service
+                  Add New Team Member
                 </Button>
               </Grid>
             </Grid>

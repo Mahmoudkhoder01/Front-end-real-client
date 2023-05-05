@@ -6,15 +6,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import classes from "./card.module.css";
+import classes from "./Card.module.css";
 import Grid from "@mui/material/Grid";
 import { toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
 import DropDown from "../DropDown/DropDown";
-// import date fields from mui
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const style = {
   position: "absolute",
@@ -32,18 +28,19 @@ const style = {
   },
 };
 
-export default function AddServiceForm(props) {
+export default function AddProjectForm(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [newData, setNewData] = useState({
-    name: "",
+    title: "",
     description: "",
-    serviceName: "",
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedServiceId, setSelectedServiceId] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleFileInputChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -54,25 +51,30 @@ export default function AddServiceForm(props) {
     setNewData((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const addsServiceId = (service_id) => {
+    setSelectedServiceId(service_id);
+  };
+
   const handleAddProject = async (event) => {
     event.preventDefault();
-    let newProject = new FormData();
-    newProject.append("name", newData.name);
-    newProject.append("description", newData.description);
-    newProject.append("image", selectedFile);
+
+    let newKid = new FormData();
+    newKid.append("title", newData.title);
+    newKid.append("description", newData.description);
+    newKid.append("image", selectedFile);
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}service`,
-        newProject
+        `${process.env.REACT_APP_URL}kid`,
+        newKid
       );
       console.log(response.data);
       setOpen(false);
       await props.regetDataAgain();
-      toast.success("Student added succefully");
+      toast.success("Kid added succefully");
     } catch (error) {
       console.error(error);
-      toast.error("Student added failed");
+      toast.error("Kid added failed");
     }
   };
 
@@ -84,7 +86,7 @@ export default function AddServiceForm(props) {
         onClick={handleOpen}
       >
         <FiPlus />
-        Add Service
+        Add Kid
       </button>
       <Modal
         open={open}
@@ -94,15 +96,15 @@ export default function AddServiceForm(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Service
+            Add New Kid
           </Typography>
           <form>
             <Grid container spacing={1}>
               <Grid xs={12} sm={12} item>
                 <TextField
-                  placeholder="Enter a name"
-                  name="name"
-                  label="Name"
+                  placeholder="Enter a title"
+                  name="title"
+                  label="Title"
                   onChange={handleFormChange}
                   variant="outlined"
                   fullWidth
@@ -111,7 +113,7 @@ export default function AddServiceForm(props) {
               </Grid>
               <Grid xs={12} sm={12} item>
                 <TextField
-                  placeholder="Enter aservice_id decription"
+                  placeholder="Enter a decription"
                   label="Description"
                   name="description"
                   onChange={handleFormChange}
@@ -137,7 +139,7 @@ export default function AddServiceForm(props) {
                   className={classes.addButton}
                   onClick={handleAddProject}
                 >
-                  Add New Service
+                  Add New Kid
                 </Button>
               </Grid>
             </Grid>

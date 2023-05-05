@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { toast } from "react-toastify";
-import classes from "./card.module.css";
+import classes from "./Card.module.css";
 
 const style = {
   position: "absolute",
@@ -24,12 +24,12 @@ const style = {
   p: 4,
 };
 
-export default function ServiceEditCard(props) {
+export default function KidEditCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [updatedData, setUpdatedData] = useState({
-    name: props.name,
+    title: props.title,
     description: props.description,
   });
   const [selectedFile, setSelectedFile] = useState(null);
@@ -48,27 +48,25 @@ export default function ServiceEditCard(props) {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("name", updatedData.name);
+    formData.append("title", updatedData.title);
     formData.append("description", updatedData.description);
     formData.append("image", selectedFile);
 
     axios
-      .patch(
-        `${process.env.REACT_APP_URL}service/edit/${props.rowId}`,
-        formData
-      )
+      .put(`${process.env.REACT_APP_URL}kid/${props.rowId}`, formData)
       .then(async (response) => {
         console.log(response);
         setUpdatedData({
-          name: props.name,
+          title: props.title,
           description: props.description,
+          serviceName: props.serviceName,
         });
         setOpen(false);
         await props.regetData();
-        toast.success("Event edited successfully");
+        toast.success("Kid edited successfully");
       })
       .catch((error) => {
-        console.log("Error editing project", error);
+        console.log("Error editing kid", error);
         toast.error(error.response.data.err);
       });
   };
@@ -87,16 +85,16 @@ export default function ServiceEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Project
+              Edit Kid
             </Typography>
             <form>
               <Grid container spacing={1}>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a service name"
-                    name="name"
-                    value={updatedData.name}
-                    label="Name"
+                    placeholder="Enter a project title"
+                    name="title"
+                    value={updatedData.title}
+                    label="Title"
                     onChange={handleFormChange}
                     variant="outlined"
                     fullWidth
@@ -105,7 +103,7 @@ export default function ServiceEditCard(props) {
                 </Grid>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a service description"
+                    placeholder="Enter a project description"
                     name="description"
                     value={updatedData.description}
                     label="Description"
@@ -133,7 +131,7 @@ export default function ServiceEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Project
+                    Edit Kid
                   </Button>
                 </Grid>
               </Grid>

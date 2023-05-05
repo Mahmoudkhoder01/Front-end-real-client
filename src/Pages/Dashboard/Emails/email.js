@@ -4,7 +4,7 @@ import useFetch from "../../../Components/useFetch/useFetch";
 
 const Email = () => {
   const { data, isLoading, error, reFetcth } = useFetch("api/contactus");
-console.log(data, "email");
+  console.log(data, "email");
   return (
     <div className={classes.cardWrapper}>
       {data.map((email) => (

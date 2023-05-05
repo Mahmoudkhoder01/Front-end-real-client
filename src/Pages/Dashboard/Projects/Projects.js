@@ -35,7 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const FixedTables = (props) => {
+const FixedTables = () => {
   const { data, isLoading, reFetch } = useFetch("project");
 
   return (
