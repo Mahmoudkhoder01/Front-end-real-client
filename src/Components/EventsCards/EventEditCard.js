@@ -71,7 +71,7 @@ export default function ProjectEditCard(props) {
       .then(async (response) => {
         console.log(response);
         setUpdatedData({
-          title: props.title,
+          name: props.name,
           description: props.description,
           serviceName: props.serviceName,
         });
@@ -105,10 +105,10 @@ export default function ProjectEditCard(props) {
               <Grid container spacing={1}>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a event title"
-                    name="title"
-                    value={updatedData.title}
-                    label="Title"
+                    placeholder="Enter a name"
+                    name="name"
+                    value={updatedData.name}
+                    label="Name"
                     onChange={handleFormChange}
                     variant="outlined"
                     fullWidth

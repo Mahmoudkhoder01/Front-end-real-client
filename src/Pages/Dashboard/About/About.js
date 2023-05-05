@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "./About.module.css";
 import bottomLeftCircle from "../../../Assets/Images/bottomLeftCircle.svg";
 import dots from "../../../Assets/Images/yellowDots.svg";
@@ -6,11 +6,6 @@ import centerCircle from "../../../Assets/Images/centerCircle1.svg";
 import bottomRightCircle from "../../../Assets/Images/centerCirclelinear.svg";
 
 export default function About() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Send the image and description to the server to update the dashboard
-  };
-
   return (
     <div className={classes.container}>
       <img

@@ -24,7 +24,7 @@ const style = {
   p: 4,
 };
 
-export default function ServiceEditCard(props) {
+export default function TeamEditCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -53,10 +53,7 @@ export default function ServiceEditCard(props) {
     formData.append("image", selectedFile);
 
     axios
-      .patch(
-        `${process.env.REACT_APP_URL}service/edit/${props.rowId}`,
-        formData
-      )
+      .patch(`${process.env.REACT_APP_URL}team/edit/${props.rowId}`, formData)
       .then(async (response) => {
         console.log(response);
         setUpdatedData({
@@ -87,7 +84,7 @@ export default function ServiceEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Project
+              Edit Team Member
             </Typography>
             <form>
               <Grid container spacing={1}>
@@ -133,7 +130,7 @@ export default function ServiceEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Project
+                    Edit Team Member
                   </Button>
                 </Grid>
               </Grid>

@@ -18,7 +18,7 @@ import AddEventForm from "../../../Components/EventsCards/EventAddCard";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#5541D7",
+    backgroundColor: "#DB1866",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -35,7 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const FixedTables = (props) => {
+const FixedTables = () => {
   const { data, isLoading, reFetch } = useFetch("api/events");
 
   return (

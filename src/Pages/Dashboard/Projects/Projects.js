@@ -18,7 +18,7 @@ import Loading from "../../../Components/LoadingAnimation/Loading";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#5541D7",
+    backgroundColor: "#DB1866",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -35,7 +35,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const FixedTables = (props) => {
+const FixedTables = () => {
   const { data, isLoading, reFetch } = useFetch("project");
 
   return (
@@ -52,7 +52,6 @@ const FixedTables = (props) => {
               pagination: {
                 paginationModel: { pageSize: 10, page: 0 },
               },
-
             }}
           >
             <Table>

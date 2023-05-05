@@ -48,7 +48,7 @@ export default function AddEventForm(props) {
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateChange = (date) => {
-    setSelectedDate(props.due);
+    setSelectedDate(date);
   };
 
   const handleFileInputChange = (event) => {
@@ -60,20 +60,24 @@ export default function AddEventForm(props) {
     setNewData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleAddProject = async (service_id) => {
+  const addsServiceId = (service_id) => {
     setSelectedServiceId(service_id);
+  };
 
-    let newProject = new FormData();
-    newProject.append("name", newData.name);
-    newProject.append("description", newData.description);
-    newProject.append("service_id", selectedServiceId);
-    newProject.append("due", selectedDate);
-    newProject.append("image", selectedFile);
+  const handleAddProject = async (event) => {
+    event.preventDefault();
+
+    let newEvent = new FormData();
+    newEvent.append("name", newData.name);
+    newEvent.append("description", newData.description);
+    newEvent.append("service_id", selectedServiceId);
+    newEvent.append("due", selectedDate);
+    newEvent.append("image", selectedFile);
 
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_URL}api/events`,
-        newProject
+        newEvent
       );
       console.log(response.data);
       setOpen(false);
@@ -130,7 +134,7 @@ export default function AddEventForm(props) {
                 />
               </Grid>
               <Grid item xs={6} sm={12}>
-                <DropDown getServiceName={handleAddProject} />
+                <DropDown getServiceName={addsServiceId} />
               </Grid>
               <Grid xs={12} sm={12} item>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
