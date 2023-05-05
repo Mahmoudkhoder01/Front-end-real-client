@@ -10,14 +10,19 @@ import { MdOutlineClass } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { HiTableCells } from "react-icons/hi2";
 import { BiUser } from "react-icons/bi";
-import { FaUserCheck, FaUserTie } from "react-icons/fa";
+import { TbMoodKid } from "react-icons/tb";
 import { HiOutlineLogout } from "react-icons/hi";
+import { AiOutlineMail, AiOutlineTeam } from "react-icons/ai";
+
+// Import Logo
+import logo from "../../Assets/Images/dashboardLogo.svg"
+import Cookies from "js-cookie";
 
 function Sidebar() {
   const currentPath = useLocation().pathname;
   if (
     currentPath === "/" ||
-    currentPath === "/about" ||
+    currentPath === "/users" ||
     currentPath === "/events" ||
     currentPath === "/kids" ||
     currentPath === "/projects" ||
@@ -32,7 +37,7 @@ function Sidebar() {
         <div>
           <img
             className={classes.logo}
-            src={process.env.PUBLIC_URL + "/Assets/LMS.svg"}
+            src={logo}
             alt="SVG Logo"
           />
         </div>
@@ -56,27 +61,33 @@ function Sidebar() {
             <u></u>
             <span>Events</span>
           </NavLink>
-          <NavLink to={"/admin/about"}>
+          <NavLink to={"/admin/users"}>
             <BiUser className={classes.icons} size={25} />
             <b></b>
             <u></u>
-            <span>About</span>
+            <span>Admins</span>
           </NavLink>
           <NavLink to={"/admin/kids"}>
-            <FaUserCheck className={classes.icons} size={25} />
+            <TbMoodKid className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Kids</span>
           </NavLink>
           <NavLink to={"/admin/team"}>
-            <FaUserTie className={classes.icons} size={25} />
+            <AiOutlineTeam className={classes.icons} size={25} />
             <b></b>
             <u></u>
             <span>Team</span>
           </NavLink>
+          <NavLink to={"/admin/emails"}>
+            <AiOutlineMail className={classes.icons} size={25} />
+            <b></b>
+            <u></u>
+            <span>Emails</span>
+          </NavLink>
         </div>
 
-        <div className={classes.setting}>
+        <div className={classes.setting} onClick={()=> { Cookies.remove("token")}}>
           <Link to={"/"}>
             <HiOutlineLogout size={30} className={classes.logOut} />
             <span>Logout</span>

@@ -15,6 +15,7 @@ function Dashboard() {
     // Send the image and description to the server to update the dashboard
   };
 
+export default function About() {
   return (
     <div className={classes.container}>
       <img
@@ -46,9 +47,8 @@ function Dashboard() {
           </label>
         </div>
       </div>
+
       
     </div>
-  );
+  )
 }
-
-export default Dashboard;

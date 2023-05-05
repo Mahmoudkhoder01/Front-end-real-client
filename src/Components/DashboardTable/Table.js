@@ -8,8 +8,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Classes from "./table.module.css";
-import ProjectEditCard from "../ProjectCards/ProjectEditCard";
-import ProjectDeleteCard from "../ProjectCards/ProjectDeleteCard";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -54,32 +52,12 @@ const FixedTables = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {props.rows.map((row) => (
-                <StyledTableRow key={row._id}>
-                  <StyledTableCell>{row.title}</StyledTableCell>
-                  <StyledTableCell>{row.description}</StyledTableCell>
-                  <StyledTableCell>{row.service_id.name}</StyledTableCell>
-                  <StyledTableCell>
-                    <img
-                      src={`${process.env.REACT_APP_URL}${row.image}`}
-                      alt="img"
-                      className={Classes.image}
-                    />
-                  </StyledTableCell>
-                  <StyledTableCell>{row.due.slice(0, 10)}</StyledTableCell>
-                  <StyledTableCell sx={{ display: "flex" }}>
-                    <ProjectEditCard
-                      adminValue={row.name}
-                      rowId={row.id}
-                      // regetData={fetchDataByPagination}
-                    />
-                    <ProjectDeleteCard
-                      rowId={row.id}
-                      // regetData={fetchDataByPagination}
-                    />
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
+              <StyledTableRow>
+                {props.rows.map((row) => (
+                  <StyledTableCell>{row}</StyledTableCell>
+                ))}
+                {console.log(props.rows)}
+              </StyledTableRow>
             </TableBody>
           </Table>
         </TableContainer>
