@@ -87,7 +87,7 @@ export default function ServiceEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Project
+              Edit Service
             </Typography>
             <form>
               <Grid container spacing={1}>
@@ -133,7 +133,7 @@ export default function ServiceEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Project
+                    Edit Service
                   </Button>
                 </Grid>
               </Grid>
