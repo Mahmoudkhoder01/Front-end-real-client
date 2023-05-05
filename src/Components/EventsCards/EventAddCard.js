@@ -32,13 +32,13 @@ const style = {
   },
 };
 
-export default function AddProjectForm(props) {
+export default function AddEventForm(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [newData, setNewData] = useState({
-    title: "",
+    name: "",
     description: "",
     serviceName: "",
   });
@@ -64,7 +64,7 @@ export default function AddProjectForm(props) {
     setSelectedServiceId(service_id);
 
     let newProject = new FormData();
-    newProject.append("title", newData.title);
+    newProject.append("name", newData.name);
     newProject.append("description", newData.description);
     newProject.append("service_id", selectedServiceId);
     newProject.append("due", selectedDate);
@@ -72,16 +72,16 @@ export default function AddProjectForm(props) {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}project`,
+        `${process.env.REACT_APP_URL}api/events`,
         newProject
       );
       console.log(response.data);
       setOpen(false);
       await props.regetDataAgain();
-      toast.success("Project added succefully");
+      toast.success("Event added succefully");
     } catch (error) {
       console.error(error);
-      toast.error("Project added failed");
+      toast.error("Event added failed");
     }
   };
 
@@ -93,7 +93,7 @@ export default function AddProjectForm(props) {
         onClick={handleOpen}
       >
         <FiPlus />
-        Add Project
+        Add Event
       </button>
       <Modal
         open={open}
@@ -103,15 +103,15 @@ export default function AddProjectForm(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Project
+            Add New Event
           </Typography>
           <form>
             <Grid container spacing={1}>
               <Grid xs={12} sm={12} item>
                 <TextField
-                  placeholder="Enter a title"
-                  name="title"
-                  label="Title"
+                  placeholder="Enter a name"
+                  name="name"
+                  label="Name"
                   onChange={handleFormChange}
                   variant="outlined"
                   fullWidth
@@ -159,7 +159,7 @@ export default function AddProjectForm(props) {
                   className={classes.addButton}
                   onClick={handleAddProject}
                 >
-                  Add New Project
+                  Add New Event
                 </Button>
               </Grid>
             </Grid>
