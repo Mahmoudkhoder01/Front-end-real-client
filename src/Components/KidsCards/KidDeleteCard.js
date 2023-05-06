@@ -10,7 +10,7 @@ import { Grid } from "@mui/material";
 import { toast } from "react-toastify";
 
 // import css file
-import classes from "../CssTableCards/DeleteCard.module.css"
+import classes from "../CssTableCards/DeleteCard.module.css";
 
 const style = {
   position: "absolute",
