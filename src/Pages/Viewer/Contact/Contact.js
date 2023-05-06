@@ -49,7 +49,7 @@ export default function Contact() {
   return (
     <>
       <h1 className={classes.contactTitle}>Contact Us!</h1>
-      <Grid container spacing={4} sx={{ padding: "2rem 4rem" }}>
+      <Grid container  sx={{ padding: "2rem 4rem", height:"65vh" }}>
         <Grid md={6} lg={6} xl={6}>
           <div>
             <p className={classes.info}>
