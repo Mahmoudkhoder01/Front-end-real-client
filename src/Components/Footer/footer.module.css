@@ -1,0 +1,21 @@
+.footer {
+  height: 160px;
+  width: 100%;
+  display: flex;
+  padding: 0 100px;
+  justify-content: space-between;
+  background-color: #F19922;
+  align-items: center;
+}
+.rightSide {
+  display: flex;
+  flex-direction: column;
+}
+.socialMedia {
+    display: flex;
+    font-size: 32px;
+    justify-content: space-around;
+}
+.socialMedia a , .copyright{
+  color: white;
+}
