@@ -9,6 +9,7 @@ import Home from "./Pages/Home/Home";
 import Services from "./Pages/Viewer/Services/Services";
 import Events from "./Pages/Viewer/Events/Events";
 import Projects from "./Pages/Viewer/Projects/Projects";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <>
+      <Navbar />
       <UserContext.Provider
         value={{ token, isLoggedIn, setToken, setIsLoggedIn }}
       >

@@ -24,10 +24,13 @@ function Sidebar() {
     currentPath === "/" ||
     currentPath === "/users" ||
     currentPath === "/events" ||
-    currentPath === "/kids" ||
+    currentPath === "/kids-zone" ||
+    currentPath === "/about" ||
+    currentPath === "/contact" ||
     currentPath === "/projects" ||
     currentPath === "/team" ||
-    currentPath === "/services"
+    currentPath === "/services" ||
+    currentPath === "/achievements"
   )
     return null;
 

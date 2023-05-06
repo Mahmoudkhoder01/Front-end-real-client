@@ -1,12 +1,27 @@
 // import React, { Component } from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../Assets/Images/topdesignlogo.svg";
 import "./navbar.css";
 
 export default function Navbar() {
   const [active, setActive] = useState("nav-list");
   const [toggleIcon, setToggleIcon] = useState("nav-icon");
+
+  const currentPath = useLocation().pathname;
+  if (
+    currentPath === "/" ||
+    currentPath === "/admin/users" ||
+    currentPath === "/admin/about" ||
+    currentPath === "/admin/kids" ||
+    currentPath === "/admin/projects" ||
+    currentPath === "/admin/emails" ||
+    currentPath === "/admin/events" ||
+    currentPath === "/admin/team" ||
+    currentPath === "/admin/services" ||
+    currentPath === "/achievements"
+  )
+    return null;
 
   const handleClick = () => {
     if (active === "nav-list") {
