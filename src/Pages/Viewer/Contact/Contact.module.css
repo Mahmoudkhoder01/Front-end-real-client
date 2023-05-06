@@ -1,0 +1,62 @@
+.contactTitle {
+    text-align: center;
+    color: #253E84;
+    position: relative;
+}
+
+.contactTitle::before {
+    content: "";
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 85px;
+    height: 5px;
+    background-color: #253E84;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.formGrid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem 0;
+}
+
+.formFields {
+    width: 50%;
+    margin-bottom: 1rem !important;
+}
+
+.formFields:focus {
+    border-color: #eee ;
+}
+
+.submitContact {
+    background-color: #FDB714 !important;
+    width: 50%;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.submitContact:hover {
+    background-color: #ffc94b !important;
+}
+
+.info {
+    font-size: 30px;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    color: #B7B8B9;
+}
+
+.info:nth-child(1) {
+    margin-top: 0;
+}
