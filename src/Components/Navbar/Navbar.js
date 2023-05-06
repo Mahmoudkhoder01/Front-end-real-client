@@ -10,7 +10,6 @@ export default function Navbar() {
 
   const currentPath = useLocation().pathname;
   if (
-    currentPath === "/" ||
     currentPath === "/admin/users" ||
     currentPath === "/admin/about" ||
     currentPath === "/admin/kids" ||
@@ -18,8 +17,7 @@ export default function Navbar() {
     currentPath === "/admin/emails" ||
     currentPath === "/admin/events" ||
     currentPath === "/admin/team" ||
-    currentPath === "/admin/services" ||
-    currentPath === "/achievements"
+    currentPath === "/admin/services" 
   )
     return null;
 
