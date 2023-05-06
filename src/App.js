@@ -5,7 +5,7 @@ import { UserContext } from "./userContext";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import PrivateRoute from "./Pages/Dashboard/privateRoutes";
-
+import Home from "./Pages/Home/Home";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -27,9 +27,11 @@ function App() {
         <Routes>
           <Route element={<PrivateRoute />}>
             <Route exact path="*" element={<DashboardRoutes />} />
-          </Route> 
+          </Route>
           {/* <Route path="/admin" element={<Website />} /> */}
+
           <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </UserContext.Provider>
     </>
