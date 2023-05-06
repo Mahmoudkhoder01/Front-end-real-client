@@ -12,6 +12,7 @@ import Projects from "./Pages/Viewer/Projects/Projects";
 import Navbar from "./Components/Navbar/Navbar";
 import Contact from "./Pages/Viewer/Contact/Contact";
 import About from "./Pages/Viewer/About/About";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -44,6 +45,7 @@ function App() {
           <Route path="/achievements" element={<Events />} />
           <Route path="/login" element={<Login />} />
         </Routes>
+        <Footer />
       </UserContext.Provider>
     </>
   );
