@@ -17,7 +17,8 @@ export default function Navbar() {
     currentPath === "/admin/emails" ||
     currentPath === "/admin/events" ||
     currentPath === "/admin/team" ||
-    currentPath === "/admin/services" 
+    currentPath === "/login" ||
+    currentPath === "/admin/services"
   )
     return null;
 

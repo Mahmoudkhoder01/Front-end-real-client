@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 // Import Css Files
 import classes from "./Sidebar.module.css";
@@ -19,6 +20,12 @@ import logo from "../../Assets/Images/dashboardLogo.svg";
 import Cookies from "js-cookie";
 
 function Sidebar() {
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
+
+  const logout = () => {
+    removeCookie("token");
+  };
+
   const currentPath = useLocation().pathname;
   if (
     currentPath === "/" ||
@@ -99,7 +106,11 @@ function Sidebar() {
           }}
         >
           <Link to={"/"}>
-            <HiOutlineLogout size={30} className={classes.logOut} />
+            <HiOutlineLogout
+              onClick={logout}
+              size={30}
+              className={classes.logOut}
+            />
             <span>Logout</span>
           </Link>
         </div>
