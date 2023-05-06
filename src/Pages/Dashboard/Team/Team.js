@@ -7,10 +7,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Classes from "./Team.module.css";
+import Classes from "../CssTable/Table.module.css";
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
+
+// import components
 import Loading from "../../../Components/LoadingAnimation/Loading";
 import AddTeamForm from "../../../Components/TeamCards/TeamAddCard";
 import TeamEditCard from "../../../Components/TeamCards/TeamEditCard";

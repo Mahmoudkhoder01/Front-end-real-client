@@ -9,6 +9,9 @@ import axios from "axios";
 import { Grid } from "@mui/material";
 import { toast } from "react-toastify";
 
+// import css file
+import classes from "../CssTableCards/DeleteCard.module.css"
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -61,7 +64,7 @@ export default function TeamDeleteCard(props) {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  className={classes.deleteButtons}
                   onClick={handleDelete}
                   style={{ width: "100%" }}
                 >
@@ -72,7 +75,7 @@ export default function TeamDeleteCard(props) {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  className={classes.deleteButtons}
                   style={{ width: "100%" }}
                   onClick={() => {
                     setOpen(false);

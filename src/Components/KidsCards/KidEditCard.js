@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { toast } from "react-toastify";
-import classes from "./Card.module.css";
+import classes from "../CssTableCards/Card.module.css";
 
 const style = {
   position: "absolute",

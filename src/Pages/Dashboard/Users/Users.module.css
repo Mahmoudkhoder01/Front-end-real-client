@@ -1,21 +1,19 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-
 .container {
+  display: flex;
+  padding-top: 10%;
+  padding-bottom: 100px;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  margin: auto;
 
-    display: flex;
-    padding-top: 10%;
-    padding-bottom: 100px;
-    width: 100%;
-    height: 100%;
-    background-color:#fff;
-    margin: auto;
-    
-  }
+}
 
-.Section2{
+.Section2 {
   display: block;
 }
 
@@ -42,7 +40,7 @@ textarea {
   height: 100px;
   padding: 10px;
   box-sizing: border-box;
-  
+
 }
 
 .btn-primary {
@@ -60,7 +58,6 @@ textarea {
   background-color: #0069d9;
 }
 
-
 .vectorContainer {
   position: relative;
   display: inline-block;
@@ -68,9 +65,7 @@ textarea {
 
 .vectorContainer img {
   display: block;
-  width: 530px; /* set the width of the vector image */
-  
-  
+  width: 530px;
 }
 
 .vectorContainer input[type="file"] {

@@ -1,4 +1,4 @@
-.addStudentBtn {
+.addFormBtn {
     display: block;
     padding: 15px;
     font-size: 16px;
@@ -11,7 +11,7 @@
     gap: 5px;
 }
 
-.addStudentBtn:hover,
+.addFormBtn:hover,
 .addButton:hover,
 .filesInput:hover {
     background-color: #e73b80 !important;

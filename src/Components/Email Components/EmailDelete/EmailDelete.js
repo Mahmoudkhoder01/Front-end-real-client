@@ -8,7 +8,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { toast } from "react-toastify";
-import classes from "./EmailDelet.module.css";
+import classes from "../../CssTableCards/DeleteCard.module.css";
 
 const style = {
   position: "absolute",
@@ -62,9 +62,9 @@ export default function EmailDeleteCard(props) {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  className={classes.deleteButtons}
                   onClick={handleDelete}
-                  style={{ width: "100%" }}
+                  style={{ width: "100%", backgroundColor: "#DB1866" }}
                 >
                   Yes
                 </Button>
@@ -73,8 +73,8 @@ export default function EmailDeleteCard(props) {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
-                  style={{ width: "100%" }}
+                  className={classes.deleteButtons}
+                  style={{ width: "100%", backgroundColor: "#DB1866" }}
                   onClick={() => {
                     setOpen(false);
                   }}

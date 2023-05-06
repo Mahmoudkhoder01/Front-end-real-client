@@ -6,11 +6,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import classes from "./Card.module.css";
+import classes from "../CssTableCards/Card.module.css";
 import Grid from "@mui/material/Grid";
 import { toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
-import DropDown from "../DropDown/DropDown";
 
 const style = {
   position: "absolute",
@@ -81,7 +80,7 @@ export default function AddProjectForm(props) {
   return (
     <div>
       <button
-        className={classes.addStudentBtn}
+        className={classes.addFormBtn}
         style={{ transform: "translate(84.5rem, 1rem)" }}
         onClick={handleOpen}
       >

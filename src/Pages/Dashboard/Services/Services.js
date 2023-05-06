@@ -7,12 +7,14 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Classes from "./Services.module.css";
+import Classes from "../CssTable/Table.module.css";
 import ServiceEditCard from "../../../Components/ServiceCards/ServiceEditCard";
 import ServiceDeleteCard from "../../../Components/ServiceCards/ServiceDeleteCard";
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
+
+// import components
 import Loading from "../../../Components/LoadingAnimation/Loading";
 import AddServiceForm from "../../../Components/ServiceCards/ServiceAddCard";
 
