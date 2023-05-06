@@ -15,7 +15,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { AiOutlineMail, AiOutlineTeam } from "react-icons/ai";
 
 // Import Logo
-import logo from "../../Assets/Images/dashboardLogo.svg"
+import logo from "../../Assets/Images/dashboardLogo.svg";
 import Cookies from "js-cookie";
 
 function Sidebar() {
@@ -35,11 +35,7 @@ function Sidebar() {
     <Fragment>
       <nav className={classes.sidebar}>
         <div>
-          <img
-            className={classes.logo}
-            src={logo}
-            alt="SVG Logo"
-          />
+          <img className={classes.logo} src={logo} alt="SVG Logo" />
         </div>
 
         <div className={classes.bar}>
@@ -67,6 +63,12 @@ function Sidebar() {
             <u></u>
             <span>Admins</span>
           </NavLink>
+          <NavLink to={"/admin/about"}>
+            <BiUser className={classes.icons} size={25} />
+            <b></b>
+            <u></u>
+            <span>About</span>
+          </NavLink>
           <NavLink to={"/admin/kids"}>
             <TbMoodKid className={classes.icons} size={25} />
             <b></b>
@@ -87,7 +89,12 @@ function Sidebar() {
           </NavLink>
         </div>
 
-        <div className={classes.setting} onClick={()=> { Cookies.remove("token")}}>
+        <div
+          className={classes.setting}
+          onClick={() => {
+            Cookies.remove("token");
+          }}
+        >
           <Link to={"/"}>
             <HiOutlineLogout size={30} className={classes.logOut} />
             <span>Logout</span>

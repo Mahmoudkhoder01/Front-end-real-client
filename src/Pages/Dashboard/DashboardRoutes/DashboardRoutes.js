@@ -11,7 +11,7 @@ import Sidebar from "../../../Components/Sidebar/Sidebar";
 import login from "../Login/Login";
 import Email from "../Emails/email";
 import PrivateRoute from "../privateRoutes";
-
+import About from "../About/About";
 
 function DashboardRoutes() {
   return (
@@ -26,8 +26,10 @@ function DashboardRoutes() {
             <Route path="/admin/projects" element={<Projects />} />
             <Route path="/admin/events" element={<Events />} />
             <Route path="/admin/users" element={<Users />} />
+            <Route path="/admin/about" element={<About />} />
             <Route path="/admin/kids" element={<Kids />} />
             <Route path="/admin/team" element={<Team />} />
+            <Route path="/admin/emails" element={<Email />} />
           </Route>
         </Routes>
       </div>

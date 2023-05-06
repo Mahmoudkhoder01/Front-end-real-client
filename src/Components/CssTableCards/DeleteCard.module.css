@@ -9,9 +9,9 @@
 
 .deleteButtons {
     width: 100%;
-    background-color: #DB1866
+    background-color: #DB1866 !important;
 }
 
-.deleteButtons:hover{
-    background-color: #e73b80;
+.deleteButtons:hover {
+    background-color: #e73b80 !important;
 }

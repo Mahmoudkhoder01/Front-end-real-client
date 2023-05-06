@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { toast } from "react-toastify";
-import classes from "./card.module.css";
+import classes from "../CssTableCards/Card.module.css";
 
 const style = {
   position: "absolute",
@@ -34,8 +34,6 @@ export default function ServiceEditCard(props) {
   });
   const [selectedFile, setSelectedFile] = useState(null);
 
-  const [selectedDate, setSelectedDate] = useState(null);
-
   const handleFormChange = (event) => {
     const { name, value } = event.target;
     setUpdatedData((prevState) => ({ ...prevState, [name]: value }));
@@ -44,10 +42,6 @@ export default function ServiceEditCard(props) {
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
-  };
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
   };
 
   const handleEdit = (event) => {
@@ -71,7 +65,7 @@ export default function ServiceEditCard(props) {
         });
         setOpen(false);
         await props.regetData();
-        toast.success("Project edited successfully");
+        toast.success("Event edited successfully");
       })
       .catch((error) => {
         console.log("Error editing project", error);
@@ -93,7 +87,7 @@ export default function ServiceEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Project
+              Edit Service
             </Typography>
             <form>
               <Grid container spacing={1}>
@@ -139,7 +133,7 @@ export default function ServiceEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Project
+                    Edit Service
                   </Button>
                 </Grid>
               </Grid>

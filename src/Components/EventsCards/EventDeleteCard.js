@@ -32,7 +32,7 @@ export default function ProjectDeleteCard(props) {
   const handleDelete = (event) => {
     event.preventDefault();
     axios
-      .delete(`${process.env.REACT_APP_URL}service/delete/${props.rowId}`)
+      .delete(`${process.env.REACT_APP_URL}api/events/${props.rowId}`)
       .then(async (response) => {
         setOpen(false);
         await props.regetData();
@@ -56,7 +56,7 @@ export default function ProjectDeleteCard(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Delete Service
+            Delete Event
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Grid container spacing={1}>

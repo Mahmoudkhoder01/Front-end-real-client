@@ -12,12 +12,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import classes from "../CssTableCards/Card.module.css";
 
-// import date fields from mui
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -30,18 +24,15 @@ const style = {
   p: 4,
 };
 
-export default function ProjectEditCard(props) {
+export default function TeamEditCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [updatedData, setUpdatedData] = useState({
-    title: props.title,
+    name: props.name,
     description: props.description,
-    serviceName: props.serviceName,
   });
   const [selectedFile, setSelectedFile] = useState(null);
-
-  const [selectedDate, setSelectedDate] = useState(null);
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -49,46 +40,29 @@ export default function ProjectEditCard(props) {
   };
 
   const handleFileInputChange = (event) => {
-    // const file = event.target.files[0];
-    // const imagePath = URL.createObjectURL(file);
-    // console.log(imagePath);
     const file = event.target.files[0];
-    // const reader = new FileReader();
-    // reader.onload = () => {
-    //   const dataUrl = reader.result;
-    // };
-    // reader.readAsDataURL(file);
     setSelectedFile(file);
-  };
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
   };
 
   const handleEdit = (event) => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("title", updatedData.title);
+    formData.append("name", updatedData.name);
     formData.append("description", updatedData.description);
-    formData.append("due", selectedDate);
     formData.append("image", selectedFile);
 
     axios
-      .patch(
-        `${process.env.REACT_APP_URL}project/edit/${props.rowId}`,
-        formData
-      )
+      .patch(`${process.env.REACT_APP_URL}team/edit/${props.rowId}`, formData)
       .then(async (response) => {
         console.log(response);
         setUpdatedData({
-          title: props.title,
+          name: props.name,
           description: props.description,
-          serviceName: props.serviceName,
         });
         setOpen(false);
         await props.regetData();
-        toast.success("Project edited successfully");
+        toast.success("Event edited successfully");
       })
       .catch((error) => {
         console.log("Error editing project", error);
@@ -110,16 +84,16 @@ export default function ProjectEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Project
+              Edit Team Member
             </Typography>
             <form>
               <Grid container spacing={1}>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a project title"
-                    name="title"
-                    value={updatedData.title}
-                    label="Title"
+                    placeholder="Enter a service name"
+                    name="name"
+                    value={updatedData.name}
+                    label="Name"
                     onChange={handleFormChange}
                     variant="outlined"
                     fullWidth
@@ -128,7 +102,7 @@ export default function ProjectEditCard(props) {
                 </Grid>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a project description"
+                    placeholder="Enter a service description"
                     name="description"
                     value={updatedData.description}
                     label="Description"
@@ -137,17 +111,6 @@ export default function ProjectEditCard(props) {
                     fullWidth
                     required
                   />
-                </Grid>
-                <Grid xs={12} sm={12} item>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DemoContainer components={["DatePicker"]}>
-                      <DatePicker
-                        label="Enter a due date"
-                        onChange={handleDateChange}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </DemoContainer>
-                  </LocalizationProvider>
                 </Grid>
                 <Grid xs={12} sm={12} item>
                   <label htmlFor="myfile">Select a file:</label>
@@ -167,7 +130,7 @@ export default function ProjectEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Project
+                    Edit Team Member
                   </Button>
                 </Grid>
               </Grid>

@@ -10,12 +10,6 @@ import classes from "../CssTableCards/Card.module.css";
 import Grid from "@mui/material/Grid";
 import { toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
-import DropDown from "../DropDown/DropDown";
-
-// import date fields from mui
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 const style = {
   position: "absolute",
@@ -33,24 +27,18 @@ const style = {
   },
 };
 
-export default function AddProjectForm(props) {
+export default function AddTeamForm(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [newData, setNewData] = useState({
-    title: "",
+    name: "",
     description: "",
     serviceName: "",
   });
 
   const [selectedFile, setSelectedFile] = useState(null);
-  const [selectedServiceId, setSelectedServiceId] = useState("");
-  const [selectedDate, setSelectedDate] = useState(null);
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
 
   const handleFileInputChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -61,31 +49,25 @@ export default function AddProjectForm(props) {
     setNewData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const addsServiceId = (service_id) => {
-    setSelectedServiceId(service_id);
-  };
-
   const handleAddProject = async (event) => {
     event.preventDefault();
     let newProject = new FormData();
-    newProject.append("title", newData.title);
+    newProject.append("name", newData.name);
     newProject.append("description", newData.description);
-    newProject.append("service_id", selectedServiceId);
-    newProject.append("due", selectedDate);
     newProject.append("image", selectedFile);
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}project`,
+        `${process.env.REACT_APP_URL}team`,
         newProject
       );
       console.log(response.data);
       setOpen(false);
       await props.regetDataAgain();
-      toast.success("Project added succefully");
+      toast.success("Team member added succefully");
     } catch (error) {
       console.error(error);
-      toast.error("Project added failed");
+      toast.error("Team member added failed");
     }
   };
 
@@ -97,7 +79,7 @@ export default function AddProjectForm(props) {
         onClick={handleOpen}
       >
         <FiPlus />
-        Add Project
+        Add Team Member
       </button>
       <Modal
         open={open}
@@ -107,15 +89,15 @@ export default function AddProjectForm(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Project
+            Add New Service
           </Typography>
           <form>
             <Grid container spacing={1}>
               <Grid xs={12} sm={12} item>
                 <TextField
-                  placeholder="Enter a title"
-                  name="title"
-                  label="Title"
+                  placeholder="Enter a name"
+                  name="name"
+                  label="Name"
                   onChange={handleFormChange}
                   variant="outlined"
                   fullWidth
@@ -124,7 +106,7 @@ export default function AddProjectForm(props) {
               </Grid>
               <Grid xs={12} sm={12} item>
                 <TextField
-                  placeholder="Enter a decription"
+                  placeholder="Enter aservice_id decription"
                   label="Description"
                   name="description"
                   onChange={handleFormChange}
@@ -132,19 +114,6 @@ export default function AddProjectForm(props) {
                   fullWidth
                   required
                 />
-              </Grid>
-              <Grid item xs={6} sm={12}>
-                <DropDown getServiceName={addsServiceId} />
-              </Grid>
-              <Grid xs={12} sm={12} item>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    value={selectedDate}
-                    label="Due date"
-                    onChange={handleDateChange}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </LocalizationProvider>
               </Grid>
               <Grid xs={12} sm={12} item>
                 <label htmlFor="myfile">Select a file:</label>
@@ -163,7 +132,7 @@ export default function AddProjectForm(props) {
                   className={classes.addButton}
                   onClick={handleAddProject}
                 >
-                  Add New Project
+                  Add New Team Member
                 </Button>
               </Grid>
             </Grid>

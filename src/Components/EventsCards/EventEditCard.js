@@ -35,7 +35,7 @@ export default function ProjectEditCard(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [updatedData, setUpdatedData] = useState({
-    title: props.title,
+    name: props.name,
     description: props.description,
     serviceName: props.serviceName,
   });
@@ -49,15 +49,7 @@ export default function ProjectEditCard(props) {
   };
 
   const handleFileInputChange = (event) => {
-    // const file = event.target.files[0];
-    // const imagePath = URL.createObjectURL(file);
-    // console.log(imagePath);
     const file = event.target.files[0];
-    // const reader = new FileReader();
-    // reader.onload = () => {
-    //   const dataUrl = reader.result;
-    // };
-    // reader.readAsDataURL(file);
     setSelectedFile(file);
   };
 
@@ -69,29 +61,26 @@ export default function ProjectEditCard(props) {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("title", updatedData.title);
+    formData.append("name", updatedData.name);
     formData.append("description", updatedData.description);
     formData.append("due", selectedDate);
     formData.append("image", selectedFile);
 
     axios
-      .patch(
-        `${process.env.REACT_APP_URL}project/edit/${props.rowId}`,
-        formData
-      )
+      .patch(`${process.env.REACT_APP_URL}api/events/${props.rowId}`, formData)
       .then(async (response) => {
         console.log(response);
         setUpdatedData({
-          title: props.title,
+          name: props.name,
           description: props.description,
           serviceName: props.serviceName,
         });
         setOpen(false);
         await props.regetData();
-        toast.success("Project edited successfully");
+        toast.success("Event edited successfully");
       })
       .catch((error) => {
-        console.log("Error editing project", error);
+        console.log("Error editing event", error);
         toast.error(error.response.data.err);
       });
   };
@@ -110,16 +99,16 @@ export default function ProjectEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Project
+              Edit Event
             </Typography>
             <form>
               <Grid container spacing={1}>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a project title"
-                    name="title"
-                    value={updatedData.title}
-                    label="Title"
+                    placeholder="Enter a name"
+                    name="name"
+                    value={updatedData.name}
+                    label="Name"
                     onChange={handleFormChange}
                     variant="outlined"
                     fullWidth
@@ -128,7 +117,7 @@ export default function ProjectEditCard(props) {
                 </Grid>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a project description"
+                    placeholder="Enter a event description"
                     name="description"
                     value={updatedData.description}
                     label="Description"
@@ -167,7 +156,7 @@ export default function ProjectEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Project
+                    Edit Event
                   </Button>
                 </Grid>
               </Grid>

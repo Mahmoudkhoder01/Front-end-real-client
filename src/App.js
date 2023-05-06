@@ -6,6 +6,9 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import PrivateRoute from "./Pages/Dashboard/privateRoutes";
 import Home from "./Pages/Home/Home";
+import Services from "./Pages/Viewer/Services/Services";
+import Events from "./Pages/Viewer/Events/Events";
+import Projects from "./Pages/Viewer/Projects/Projects";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -28,8 +31,10 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route exact path="*" element={<DashboardRoutes />} />
           </Route>
-          {/* <Route path="/admin" element={<Website />} /> */}
-
+          <Route path="/" element={<Home />} />
+          <Route exact path="/services" element={<Services />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
         </Routes>

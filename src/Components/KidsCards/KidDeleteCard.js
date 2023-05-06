@@ -10,7 +10,7 @@ import { Grid } from "@mui/material";
 import { toast } from "react-toastify";
 
 // import css file
-import classes from "../CssTableCards/DeleteCard.module.css"
+import classes from "../CssTableCards/DeleteCard.module.css";
 
 const style = {
   position: "absolute",
@@ -24,7 +24,7 @@ const style = {
   p: 4,
 };
 
-export default function ProjectDeleteCard(props) {
+export default function KidDeleteCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,14 +32,14 @@ export default function ProjectDeleteCard(props) {
   const handleDelete = (event) => {
     event.preventDefault();
     axios
-      .delete(`${process.env.REACT_APP_URL}service/delete/${props.rowId}`)
+      .delete(`${process.env.REACT_APP_URL}kid/${props.rowId}`)
       .then(async (response) => {
         setOpen(false);
         await props.regetData();
-        toast.success("Project deleted successfully");
+        toast.success("Kid deleted successfully");
       })
       .catch((error) => {
-        console.log("Error deleting Project", error);
+        console.log("Error deleting kid", error);
         toast.error(error);
       });
   };
@@ -56,7 +56,7 @@ export default function ProjectDeleteCard(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Delete Service
+            Delete Kid
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Grid container spacing={1}>
@@ -66,7 +66,6 @@ export default function ProjectDeleteCard(props) {
                   variant="contained"
                   className={classes.deleteButtons}
                   onClick={handleDelete}
-                  style={{ width: "100%" }}
                 >
                   Yes
                 </Button>
@@ -76,7 +75,6 @@ export default function ProjectDeleteCard(props) {
                   type="submit"
                   variant="contained"
                   className={classes.deleteButtons}
-                  style={{ width: "100%" }}
                   onClick={() => {
                     setOpen(false);
                   }}
