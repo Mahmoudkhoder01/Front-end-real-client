@@ -1,4 +1,5 @@
 .about{
+  position: relative;
   display: flex;
   margin: 50px 0;
 }
@@ -17,3 +18,38 @@
   width: 80%;
   margin: 0 20px;
 }
+
+.yellowLeft{
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    transform: rotateY(180deg);
+    z-index: -6;
+}
+.yellowRight {
+      transform: scale(0.5);
+        position: absolute;
+        right: -70px;
+        bottom: -200px;
+}
+.purpleCircle {
+  position: absolute;
+    left: 0px;
+    bottom: -50px;
+}
+.dotsRight, .dotsLeft {
+      filter: invert(62%) sepia(75%) saturate(787%) hue-rotate(345deg) brightness(99%) contrast(91%);
+      -webkit-filter: invert(62%) sepia(75%) saturate(787%) hue-rotate(345deg) brightness(99%) contrast(91%);
+}
+.dotsLeft {
+      position: absolute;
+      bottom: 0px;
+      transform: rotate(90deg);
+      left: 200px;
+}
+.dotsRight {
+    right: 50px;
+      position: absolute;
+      top: 200px;
+}
+
