@@ -84,13 +84,13 @@
     border: 15px solid #DB1866;
 }
 
-.vector{
+.vector {
     position: absolute;
     left: 40%;
     bottom: 3rem;
 }
 
-.point{
+.point {
     position: absolute;
     width: 20px;
     height: 20px;

@@ -1,0 +1,30 @@
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+}
+
+.heading {
+    background-color: #DB1866;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.image img {
+    width: 150px;
+    height: 150px;
+}
+
+.desc {
+    font-size: larger;
+    text-align: center;
+}
