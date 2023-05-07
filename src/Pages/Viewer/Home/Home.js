@@ -1,5 +1,49 @@
-import classes from "./Home.module.css";
+import styles from "./Home.module.css";
+
+// import images
+import topCircle from "../../../Assets/Images/topcircle.svg";
+import dots from "../../../Assets/Images/dots.svg";
+import topRectangle from "../../../Assets/Images/toprectangle.svg";
+import centerCircle from "../../../Assets/Images/centerCircle1.svg";
+import centerLinear from "../../../Assets/Images/centerCirclelinear.svg";
+import bottomCircle from "../../../Assets/Images/bottomCircle.svg";
+import landing from "../../../Assets/Images/landing.png";
 
 export default function Home() {
-  return <div><h1>Website Home</h1></div>;
+  return (
+    <div>
+      <div className={styles.homePage}>
+        <div className={styles.topSide}>
+          <img
+            src={topRectangle}
+            alt="shapes"
+            className={styles.topRectangle}
+          />
+          <img src={topCircle} alt="shapes" className={styles.topCircle} />
+          <img src={dots} alt="shapes" className={styles.topDots} />
+        </div>
+        <div className={styles.centerSide}>
+          <img
+            src={centerCircle}
+            alt="shapes"
+            className={styles.centerCircle}
+          />
+          <img src={dots} alt="shapes" className={styles.centerDots} />
+          <img
+            src={centerLinear}
+            alt="shapes"
+            className={styles.centerLinear}
+          />
+          <div className={styles.heroSection}>
+            <div>
+              <h1>Design Driven With Passion</h1>
+            </div>
+            <div>
+              <img src={landing} alt="" width={800} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
