@@ -1,4 +1,15 @@
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../userContext";
 import styles from "./login.module.css";
+import axios from "axios";
+import Cookies from "js-cookie";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import TextField from "@mui/material/TextField";
+import Button from "../../../Components/Button/Button";
+
+// import images
 import logo from "../../../Assets/Images/topdesignlogo.svg";
 import topCircle from "../../../Assets/Images/topcircle.svg";
 import dots from "../../../Assets/Images/dots.svg";
@@ -6,21 +17,13 @@ import topRectangle from "../../../Assets/Images/toprectangle.svg";
 import centerCircle from "../../../Assets/Images/centerCircle1.svg";
 import centerLinear from "../../../Assets/Images/centerCirclelinear.svg";
 import bottomCircle from "../../../Assets/Images/bottomCircle.svg";
-import TextField from "@mui/material/TextField";
-import Button from "../../../Components/Button/Button";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../../userContext";
-import { useState, useContext } from "react";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 function Login() {
   const { setToken, setIsLoggedIn } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -58,10 +61,9 @@ function Login() {
         setToken(authToken);
         setIsLoggedIn(true);
         setErrorMessage("");
-        navigate("/admin/services")
+        navigate("/admin/services");
         toast.success("Login successful!");
         Cookies.set("token", authToken, { expires: 1 }); //1day
-        
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {

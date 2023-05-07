@@ -1,0 +1,85 @@
+.homePage {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.topSide {
+    height: 186px;
+    position: relative;
+}
+
+.topRectangle {
+    right: 0;
+    position: absolute;
+    bottom: 4rem;
+}
+
+.topCircle {
+    position: absolute;
+    bottom: 3rem;
+    right: 0px;
+}
+
+.topDots {
+    position: absolute;
+    bottom: 6rem;
+    right: 40px;
+}
+
+.centerSide {
+    background-color: #F19922;
+    height: calc(85% - 186px*2);
+    width: 100%;
+    bottom: 4rem;
+    position: relative;
+}
+
+.centerCircle {
+    position: absolute;
+}
+
+.centerDots {
+    position: absolute;
+    top: 3rem;
+    left: 4rem;
+    width: 100px;
+    height: 100px;
+}
+
+.centerLinear {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
+}
+
+.heading {
+    color: #DB1866;
+}
+
+.bottomSide {
+    position: absolute;
+    bottom: 0.56rem;
+}
+
+.heroSection {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4rem;
+}
+
+.heroSection h1 {
+    color: white;
+    font-size: 86px;
+    width: 20%;
+    line-height: 80px;
+    font-weight: bolder !important;
+}
+
+.heroSection img {
+    position: absolute;
+    right: 10rem;
+    bottom: -1.2rem;
+    border: 15px solid #DB1866;
+}
