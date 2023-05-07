@@ -1,0 +1,16 @@
+.card {
+  background-color: white;
+  transition: 0.3s;
+}
+
+.portfolio .card:hover {
+  transform: scale(1.05);
+}
+
+.portfolio .portfolio-content .card img {
+  max-width: 100%;
+}
+
+.portfolio .portfolio-content .card img {
+  max-width: 100%;
+}
