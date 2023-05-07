@@ -1,38 +1,17 @@
 import * as React from "react";
-import teamImage from "../../Assets/Images/dots.svg";
-import "./MissionCard.css";
+import classes from "./MissionCard.module.css";
 
-export default function RecipeReviewCard(props) {
+export default function RecipeReviewCard({ title, imageSource, paragraph }) {
   return (
-    <div className="mission-page-card">
-      <h2
-        style={{
-          textAlign: "center",
-          // marginBottom: "20px",
-          fontSize: "2rem",
-          backgroundColor: "#db1866",
-          color: "#fff",
-        }}
-      >
-        {props.title}
-      </h2>
-      <div className="mission-page-card-content">
-        <div className="mission-page-card-content-image">
-          <img
-            src={teamImage}
-            alt="card image"
-            width="100%"
-            height="100%"
-            style={{ objectFit: "contain" }}
-          />
-        </div>
-        <div className="mission-page-card-content-desc">
-          <p>
-            This impressive paella is a perfect party dish <br></br>and a fun //
-            meal to cook together with your guests.<br></br> Add 1 cup of frozen
-            // peas along with the mussels,<br></br> if you like.
-          </p>
-        </div>
+    <div className={classes.details}>
+      <div className={classes.heading}>
+        <h2>{title}</h2>
+      </div>
+      <div className={classes.image}>
+        <img src={imageSource} alt="soura" />
+      </div>
+      <div className={classes.desc}>
+        <p>{paragraph}</p>
       </div>
     </div>
   );

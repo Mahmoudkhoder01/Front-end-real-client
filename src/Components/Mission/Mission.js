@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import RecipeReviewCard from "./MissionCard";
-import "./mission.css";
+import classes from "./mission.module.css";
+import mission from "../../Assets/Images/mission.png";
 
 function Mission() {
-  const [missionData, setMissionData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/")
-      .then((response) => {
-        setMissionData(response.data.message);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
-    <div className="mission-page">
-      <div className="mission-page-cards">
-        <RecipeReviewCard title="OUR MISSION" />
-        <RecipeReviewCard title="OUR VISION" />
-        <RecipeReviewCard title="OUR VALUES" />
-      </div>
+    <div className={classes.missionPageCards}>
+      <RecipeReviewCard
+        title="OUR MISSION"
+        imageSource={mission}
+        paragraph={
+          "Lorem ipsum dolor sit amet, consectetur adipa adipasis imageum et just eirm sit ullamcorper ullamcorper magna aliqu "
+        }
+      />
+      <RecipeReviewCard
+        title="OUR VISION"
+        imageSource={mission}
+        paragraph={
+          "Lorem ipsum dolor sit amet, consectetur adipa adipasis imageum et just eirm sit ullamcorper ullamcorper magna aliqu "
+        }
+      />
+      <RecipeReviewCard
+        title="OUR VALUES"
+        imageSource={mission}
+        paragraph={
+          "Lorem ipsum dolor sit amet, consectetur adipa adipasis imageum et just eirm sit ullamcorper ullamcorper magna aliqu "
+        }
+      />
     </div>
   );
 }

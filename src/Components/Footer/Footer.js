@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./footer.module.css";
+import { useLocation } from "react-router-dom";
 import logo from "../../Assets/Images/dashboardLogo.svg";
 import {
   FaFacebookF,
@@ -10,6 +11,20 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
+  const currentPath = useLocation().pathname;
+  if (
+    currentPath === "/admin/users" ||
+    currentPath === "/admin/about" ||
+    currentPath === "/admin/kids" ||
+    currentPath === "/admin/projects" ||
+    currentPath === "/admin/emails" ||
+    currentPath === "/admin/events" ||
+    currentPath === "/admin/team" ||
+    currentPath === "/login" ||
+    currentPath === "/admin/services"
+  )
+    return null;
+    
   return (
     <>
       <div className={styles.footer}>
