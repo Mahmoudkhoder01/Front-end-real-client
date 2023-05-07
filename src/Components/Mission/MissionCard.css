@@ -1,0 +1,17 @@
+.mission-page-card-content {
+    height: 500px;
+    width: 300px;
+    background-color: #f2f2f2;
+    padding: 10px 15px;
+}
+
+.mission-page-card-content-image {
+    height: 300px;
+    width: 100%;
+}
+
+.mission-page-card-content-desc {
+    height: 200px;
+    width: 100%;
+    margin-top: 20px;
+}
