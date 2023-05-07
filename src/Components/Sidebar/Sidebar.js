@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 // Import Css Files
 import classes from "./Sidebar.module.css";
@@ -14,16 +15,29 @@ import { TbMoodKid } from "react-icons/tb";
 import { HiOutlineLogout } from "react-icons/hi";
 import { AiOutlineMail, AiOutlineTeam } from "react-icons/ai";
 
+// Import Logo
+import logo from "../../Assets/Images/dashboardLogo.svg";
+import Cookies from "js-cookie";
+
 function Sidebar() {
+  const [cookies, setCookie, removeCookie] = useCookies(["auth"]);
+
+  const logout = () => {
+    removeCookie("token");
+  };
+
   const currentPath = useLocation().pathname;
   if (
     currentPath === "/" ||
-    currentPath === "/about" ||
+    currentPath === "/users" ||
     currentPath === "/events" ||
-    currentPath === "/kids" ||
+    currentPath === "/kids-zone" ||
+    currentPath === "/about" ||
+    currentPath === "/contact" ||
     currentPath === "/projects" ||
     currentPath === "/team" ||
-    currentPath === "/services"
+    currentPath === "/services" ||
+    currentPath === "/achievements"
   )
     return null;
 
@@ -31,11 +45,7 @@ function Sidebar() {
     <Fragment>
       <nav className={classes.sidebar}>
         <div>
-          <img
-            className={classes.logo}
-            src={process.env.PUBLIC_URL + "/Assets/LMS.svg"}
-            alt="SVG Logo"
-          />
+          <img className={classes.logo} src={logo} alt="SVG Logo" />
         </div>
 
         <div className={classes.bar}>
@@ -56,6 +66,12 @@ function Sidebar() {
             <b></b>
             <u></u>
             <span>Events</span>
+          </NavLink>
+          <NavLink to={"/admin/users"}>
+            <BiUser className={classes.icons} size={25} />
+            <b></b>
+            <u></u>
+            <span>Admins</span>
           </NavLink>
           <NavLink to={"/admin/about"}>
             <BiUser className={classes.icons} size={25} />
@@ -83,9 +99,18 @@ function Sidebar() {
           </NavLink>
         </div>
 
-        <div className={classes.setting}>
+        <div
+          className={classes.setting}
+          onClick={() => {
+            Cookies.remove("token");
+          }}
+        >
           <Link to={"/"}>
-            <HiOutlineLogout size={30} className={classes.logOut} />
+            <HiOutlineLogout
+              onClick={logout}
+              size={30}
+              className={classes.logOut}
+            />
             <span>Logout</span>
           </Link>
         </div>

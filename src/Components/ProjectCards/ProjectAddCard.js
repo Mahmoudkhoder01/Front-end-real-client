@@ -6,11 +6,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import classes from "./card.module.css";
+import classes from "../CssTableCards/Card.module.css";
 import Grid from "@mui/material/Grid";
 import { toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
 import DropDown from "../DropDown/DropDown";
+
 // import date fields from mui
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -60,9 +61,12 @@ export default function AddProjectForm(props) {
     setNewData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleAddProject = async (service_id) => {
+  const addsServiceId = (service_id) => {
     setSelectedServiceId(service_id);
+  };
 
+  const handleAddProject = async (event) => {
+    event.preventDefault();
     let newProject = new FormData();
     newProject.append("title", newData.title);
     newProject.append("description", newData.description);
@@ -72,28 +76,28 @@ export default function AddProjectForm(props) {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/project`,
+        `${process.env.REACT_APP_URL}project`,
         newProject
       );
       console.log(response.data);
       setOpen(false);
       await props.regetDataAgain();
-      toast.success("Student added succefully");
+      toast.success("Project added succefully");
     } catch (error) {
       console.error(error);
-      toast.error("Student added failed");
+      toast.error("Project added failed");
     }
   };
 
   return (
     <div>
       <button
-        className={classes.addStudentBtn}
+        className={classes.addFormBtn}
         style={{ transform: "translate(84.5rem, 1rem)" }}
         onClick={handleOpen}
       >
         <FiPlus />
-        label Add Student
+        Add Project
       </button>
       <Modal
         open={open}
@@ -103,7 +107,7 @@ export default function AddProjectForm(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Student
+            Add New Project
           </Typography>
           <form>
             <Grid container spacing={1}>
@@ -130,13 +134,13 @@ export default function AddProjectForm(props) {
                 />
               </Grid>
               <Grid item xs={6} sm={12}>
-                <DropDown getServiceName={handleAddProject} />
+                <DropDown getServiceName={addsServiceId} />
               </Grid>
               <Grid xs={12} sm={12} item>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                     value={selectedDate}
-                    label="Date of Birth"
+                    label="Due date"
                     onChange={handleDateChange}
                     renderInput={(params) => <TextField {...params} />}
                   />
@@ -159,7 +163,7 @@ export default function AddProjectForm(props) {
                   className={classes.addButton}
                   onClick={handleAddProject}
                 >
-                  Add New Student
+                  Add New Project
                 </Button>
               </Grid>
             </Grid>

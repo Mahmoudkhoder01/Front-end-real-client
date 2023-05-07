@@ -7,18 +7,20 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Classes from "./Services.module.css";
+import Classes from "../CssTable/Table.module.css";
 import ServiceEditCard from "../../../Components/ServiceCards/ServiceEditCard";
 import ServiceDeleteCard from "../../../Components/ServiceCards/ServiceDeleteCard";
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
-import AddProjectForm from "../../../Components/ProjectCards/ProjectAddCard";
+
+// import components
 import Loading from "../../../Components/LoadingAnimation/Loading";
+import AddServiceForm from "../../../Components/ServiceCards/ServiceAddCard";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#5541D7",
+    backgroundColor: "#DB1866",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -44,7 +46,7 @@ const FixedTables = () => {
         <Loading />
       ) : (
         <>
-          <AddProjectForm regetDataAgain={reFetch} />
+          <AddServiceForm regetDataAgain={reFetch} />
           <TableContainer
             className={Classes.adminPage}
             component={Paper}

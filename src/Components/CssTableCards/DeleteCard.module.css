@@ -1,0 +1,17 @@
+.deleteIcon {
+    font-size: 40px !important;
+    color: white;
+}
+
+.deleteIcon:hover {
+    color: rgba(219, 214, 214, 0.644);
+}
+
+.deleteButtons {
+    width: 100%;
+    background-color: #DB1866 !important;
+}
+
+.deleteButtons:hover {
+    background-color: #e73b80 !important;
+}

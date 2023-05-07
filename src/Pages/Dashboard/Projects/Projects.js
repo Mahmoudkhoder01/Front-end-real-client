@@ -7,18 +7,20 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Classes from "./Project.module.css";
+import Classes from "../CssTable/Table.module.css";
 import ProjectEditCard from "../../../Components/ProjectCards/ProjectEditCard";
 import ProjectDeleteCard from "../../../Components/ProjectCards/ProjectDeleteCard";
 
 // import reusabel fetch data
 import useFetch from "../../../Components/useFetch/useFetch";
+
+// import components
 import AddProjectForm from "../../../Components/ProjectCards/ProjectAddCard";
 import Loading from "../../../Components/LoadingAnimation/Loading";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#5541D7",
+    backgroundColor: "#DB1866",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -35,7 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const FixedTables = (props) => {
+const FixedTables = () => {
   const { data, isLoading, reFetch } = useFetch("project");
 
   return (

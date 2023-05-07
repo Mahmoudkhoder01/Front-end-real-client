@@ -1,13 +1,15 @@
   .load {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin: 50px auto;
+      height: 100vh;
   }
 
   .load div {
       width: 20px;
       height: 20px;
-      background-color: orchid;
+      background-color: #DB1866;
       border-radius: 50%;
       margin: 0 5px;
       animation-name: up-and-down;
