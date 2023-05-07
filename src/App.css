@@ -2,3 +2,8 @@
   font-family: 'Poppins', sans-serif;
   font-family: 'Roboto Mono', monospace;
 }
+:root{
+  --mainColor: #F19922;
+  --accentColor: #DB1866;
+  
+}
