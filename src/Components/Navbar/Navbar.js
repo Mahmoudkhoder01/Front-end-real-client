@@ -34,6 +34,7 @@ export default function Navbar() {
       setToggleIcon("nav-icon");
     }
   };
+
   return (
     <div className="nav-main">
       <div className="nav-logo">
@@ -43,7 +44,6 @@ export default function Navbar() {
       </div>
       <div className={active}>
         <NavLink to="/">HOME</NavLink>
-        <NavLink to="/about">ABOUT</NavLink>
         <NavLink to="/services">SERVICES</NavLink>
         <NavLink to="/projects">PROJECTS</NavLink>
         <NavLink to="/kids-zone">KIDSZONE</NavLink>
