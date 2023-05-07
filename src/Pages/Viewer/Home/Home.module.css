@@ -51,7 +51,7 @@
     position: absolute;
     transform: translateY(-50%);
     top: 50%;
-    right: 0;
+    right: 50%;
 }
 
 .heading {
@@ -77,9 +77,29 @@
     font-weight: bolder !important;
 }
 
-.heroSection img {
+.heroSection .landing {
     position: absolute;
     right: 10rem;
     bottom: -1.2rem;
     border: 15px solid #DB1866;
+}
+
+.vector{
+    position: absolute;
+    left: 40%;
+    bottom: 3rem;
+}
+
+.point{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #DB1866;
+    left: 33%;
+    bottom: 4rem;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
