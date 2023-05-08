@@ -44,10 +44,9 @@ export default function Navbar() {
       </div>
       <div className={active}>
         <NavLink to="/">HOME</NavLink>
-        <NavLink to="/services">SERVICES</NavLink>
         <NavLink to="/projects">PROJECTS</NavLink>
+        <NavLink to="/achievements">EVENTS</NavLink>
         <NavLink to="/kids-zone">KIDSZONE</NavLink>
-        <NavLink to="/achievements">ACHIEVEMENTS</NavLink>
         <NavLink to="/contact">CONTACT</NavLink>
       </div>
       <div onClick={handleClick} className={toggleIcon}>

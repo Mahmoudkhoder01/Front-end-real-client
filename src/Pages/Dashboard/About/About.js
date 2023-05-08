@@ -78,15 +78,6 @@ export default function About(props) {
             className={classes.bottomRightCircle}
             alt=""
           />
-          <div className={classes.uploadImage}>
-            <div>
-              <input
-                type="file"
-                name="image"
-                onChange={handleFileInputChange}
-              />
-            </div>
-          </div>
           <div className={classes.content}>
             <div className={classes.heading}>
               <h2>ABOUT THE CEO</h2>

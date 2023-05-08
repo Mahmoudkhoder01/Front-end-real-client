@@ -27,21 +27,16 @@ const style = {
   },
 };
 
-export default function AddServiceForm(props) {
+export default function AddAdminForm(props) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const [newData, setNewData] = useState({
-    name: "",
-    serviceName: "",
+    username: "",
+    email: "",
+    password: "",
   });
-
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleFileInputChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -50,22 +45,25 @@ export default function AddServiceForm(props) {
 
   const handleAddProject = async (event) => {
     event.preventDefault();
-    let newProject = new FormData();
-    newProject.append("name", newData.name);
-    newProject.append("image", selectedFile);
+
+    let newAdmin = {
+      username: newData.username,
+      email: newData.email,
+      password: newData.password,
+    };
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_URL}service`,
-        newProject
+        `${process.env.REACT_APP_URL}admin/register`,
+        newAdmin
       );
       console.log(response.data);
       setOpen(false);
       await props.regetDataAgain();
-      toast.success("Student added succefully");
+      toast.success("Admin added succefully");
     } catch (error) {
       console.error(error);
-      toast.error("Student added failed");
+      toast.error("Admin added failed");
     }
   };
 
@@ -77,7 +75,7 @@ export default function AddServiceForm(props) {
         onClick={handleOpen}
       >
         <FiPlus />
-        Add Service
+        Add Admin
       </button>
       <Modal
         open={open}
@@ -87,15 +85,15 @@ export default function AddServiceForm(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Service
+            Add New Admin
           </Typography>
           <form>
             <Grid container spacing={1}>
               <Grid xs={12} sm={12} item>
                 <TextField
-                  placeholder="Enter a name"
-                  name="name"
-                  label="Name"
+                  placeholder="Enter a username"
+                  name="username"
+                  label="User Name"
                   onChange={handleFormChange}
                   variant="outlined"
                   fullWidth
@@ -103,13 +101,26 @@ export default function AddServiceForm(props) {
                 />
               </Grid>
               <Grid xs={12} sm={12} item>
-                <label htmlFor="myfile">Select a file:</label>
-                <input
-                  type="file"
-                  id="myfile"
-                  name="image"
-                  onChange={handleFileInputChange}
-                  className={classes.filesInput}
+                <TextField
+                  placeholder="Enter an email"
+                  name="email"
+                  label="Email Address"
+                  onChange={handleFormChange}
+                  variant="outlined"
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid xs={12} sm={12} item>
+                <TextField
+                  type="password"
+                  placeholder="Enter a password"
+                  name="password"
+                  label="Password"
+                  onChange={handleFormChange}
+                  variant="outlined"
+                  fullWidth
+                  required
                 />
               </Grid>
               <Grid className={classes.add} item xs={12}>
@@ -119,7 +130,7 @@ export default function AddServiceForm(props) {
                   className={classes.addButton}
                   onClick={handleAddProject}
                 >
-                  Add New Service
+                  Add New Admin
                 </Button>
               </Grid>
             </Grid>

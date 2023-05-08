@@ -61,7 +61,6 @@ const FixedTables = () => {
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Name</StyledTableCell>
-                  <StyledTableCell>DESCRIPTION</StyledTableCell>
                   <StyledTableCell>IMAGE</StyledTableCell>
                   <StyledTableCell></StyledTableCell>
                 </TableRow>
@@ -70,7 +69,6 @@ const FixedTables = () => {
                 {data.map((row) => (
                   <StyledTableRow key={row._id}>
                     <StyledTableCell>{row.name}</StyledTableCell>
-                    <StyledTableCell>{row.description}</StyledTableCell>
                     <StyledTableCell>
                       <img
                         src={`${process.env.REACT_APP_URL}${row.image}`}
@@ -85,7 +83,6 @@ const FixedTables = () => {
                     >
                       <ServiceEditCard
                         name={row.name}
-                        description={row.description}
                         image={row.image}
                         rowId={row._id}
                         regetData={reFetch}

@@ -24,48 +24,44 @@ const style = {
   p: 4,
 };
 
-export default function ServiceEditCard(props) {
+export default function AdminEditCard(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [updatedData, setUpdatedData] = useState({
-    name: props.name,
+    username: props.username,
+    email: props.email,
+    password: props.password,
   });
-  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
     setUpdatedData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleFileInputChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-  };
-
   const handleEdit = (event) => {
     event.preventDefault();
 
-    const formData = new FormData();
-    formData.append("name", updatedData.name);
-    formData.append("image", selectedFile);
+    const formData = {
+      username: updatedData.username,
+      email: updatedData.email,
+      password: updatedData.password,
+    };
 
     axios
-      .patch(
-        `${process.env.REACT_APP_URL}service/edit/${props.rowId}`,
-        formData
-      )
+      .patch(`${process.env.REACT_APP_URL}admin/edit/${props.rowId}`, formData)
       .then(async (response) => {
         console.log(response);
         setUpdatedData({
-          name: props.name,
+          username: props.username,
+          email: props.email,
         });
         setOpen(false);
         await props.regetData();
-        toast.success("Event edited successfully");
+        toast.success("Admin edited successfully");
       })
       .catch((error) => {
-        console.log("Error editing project", error);
+        console.log("Error editing Admin", error);
         toast.error(error.response.data.err);
       });
   };
@@ -84,16 +80,16 @@ export default function ServiceEditCard(props) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Edit Service
+              Edit Admin
             </Typography>
             <form>
               <Grid container spacing={1}>
                 <Grid xs={12} sm={12} item>
                   <TextField
-                    placeholder="Enter a service name"
-                    name="name"
-                    value={updatedData.name}
-                    label="Name"
+                    placeholder="Enter a username"
+                    name="username"
+                    value={updatedData.username}
+                    label="User Name"
                     onChange={handleFormChange}
                     variant="outlined"
                     fullWidth
@@ -101,13 +97,28 @@ export default function ServiceEditCard(props) {
                   />
                 </Grid>
                 <Grid xs={12} sm={12} item>
-                  <label htmlFor="myfile">Select a file:</label>
-                  <input
-                    type="file"
-                    id="image"
-                    name="image"
-                    onChange={handleFileInputChange}
-                    className={classes.filesInput}
+                  <TextField
+                    placeholder="Enter an email address"
+                    name="email"
+                    value={updatedData.email}
+                    label="Email Address"
+                    onChange={handleFormChange}
+                    variant="outlined"
+                    fullWidth
+                    required
+                  />
+                </Grid>
+                <Grid xs={12} sm={12} item>
+                  <TextField
+                    type="password"
+                    placeholder="Enter a password"
+                    name="password"
+                    value={updatedData.password}
+                    label="Password"
+                    onChange={handleFormChange}
+                    variant="outlined"
+                    fullWidth
+                    required
                   />
                 </Grid>
                 <Grid item xs={12} sm={12}>
@@ -118,7 +129,7 @@ export default function ServiceEditCard(props) {
                     onClick={handleEdit}
                     className={classes.addButton}
                   >
-                    Edit Service
+                    Edit Admin
                   </Button>
                 </Grid>
               </Grid>
